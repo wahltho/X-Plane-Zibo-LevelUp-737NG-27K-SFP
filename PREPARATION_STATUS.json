@@ -1,0 +1,61 @@
+{
+  "packageVersion": "0.1.0-beta.1",
+  "status": "Public beta authorized; source-reviewed and dry-tested; simulator validation remains open",
+  "configuration": "737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2 / FAA Category C/N brakes",
+  "installReady": true,
+  "releaseReady": true,
+  "mtkIntegrationReady": true,
+  "validation": {
+    "standalone": {
+      "methods": 54,
+      "passed": 54,
+      "result": "PASS on final behavioral source"
+    },
+    "publicExport": {
+      "methods": 14,
+      "passed": 14,
+      "result": "PASS; additive ownership-policy contract and actual export tested",
+      "publicFileCount": 76,
+      "modulePayloadCopies": 32,
+      "runtimeTypedLeavesUnchanged": 5880
+    },
+    "lua": {
+      "methods": 12,
+      "passed": 12,
+      "result": "PASS; 5880 typed numeric/missing leaves and rating keys unchanged"
+    },
+    "mtk": {
+      "compiledCoreSha256": "65a32a608d66acf1106bcba7a3e036ef395af3d5fa56ae4835123c0bdeb0c9e5",
+      "catalogVersion": "1.16.0",
+      "catalogSchema": 2,
+      "catalogSha256": "57b0d4a4f1a1a36c1acd1661b5d1fc05d4a4acf8de4fd90e919c5ac9ecbefc21",
+      "cases": 28,
+      "passed": 28,
+      "failed": 0,
+      "scope": "Actual original new Core with explicitly supplied corrected current catalog; embedded/offline catalog must include state and lock evidence."
+    },
+    "simulatorRuntime": "not-run; separate approval required",
+    "standalonePackagingChecks": {
+      "methods": 2,
+      "passed": 2,
+      "result": "PASS; integrity and explicit disabled-fixture gate verified"
+    },
+    "mtkPolicyContract": "Registered and structurally checked; actual new-Core owner/refusal/Restore/combined execution passed with corrected current catalog"
+  },
+  "remainingScopeLimits": [
+    "No AFM/PD dispatch distances, optimum ATM or MTOW",
+    "No contaminated-runway or universal SFP hardware model",
+    "Airborne first activation excluded",
+    "Exact .35 TOGA/MAN/THR-HLD/climb timing and real thrust calibration remain simulator-open"
+  ],
+  "openNumericalConvention": "Exact interpolation/rounding convention remains unverified",
+  "mtkIntegrationRequirements": [
+    "MTK 0.28.0 or newer with catalog schema2 and registered full state/lock policy",
+    "Corrected policy must also be included in the MTK offline bundle",
+    "Selectable download/group registration belongs to the MTK catalog project"
+  ],
+  "mtkOwnershipPolicy": "mtk-ownership-policy.json",
+  "mtkPolicyAutomaticallyRegistered": false,
+  "mtkPolicyRegisteredInInspectedCatalog": true,
+  "simulatorValidated": false
+}

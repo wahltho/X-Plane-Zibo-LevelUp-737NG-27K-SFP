@@ -1,0 +1,18 @@
+{
+  "format": "migrate-marked-block-v1",
+  "name": "CALC_TRIM",
+  "beginMarker": "-- BEGIN SFP27 CALC_TRIM",
+  "endMarker": "-- END SFP27 CALC_TRIM",
+  "anchorLines": [
+    "function B738_calc_trim()"
+  ],
+  "position": "after",
+  "contentLines": [
+    "-- package-version|0.1.0-beta.1",
+    "    if B738_sfp27_calc.active() then",
+    "        B738_sfp27_calc.trim()",
+    "        return",
+    "    end"
+  ],
+  "legacyBlocks": []
+}

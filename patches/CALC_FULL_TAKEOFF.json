@@ -1,0 +1,17 @@
+{
+  "format": "migrate-marked-block-v1",
+  "name": "CALC_FULL_TAKEOFF",
+  "beginMarker": "-- BEGIN SFP27 CALC_FULL_TAKEOFF",
+  "endMarker": "-- END SFP27 CALC_FULL_TAKEOFF",
+  "anchorLines": [
+    "\t\t\t-- B738DR_thr_takeoff_full_N1[0], B738DR_thr_takeoff_full_N1[1] = B738_takeoff_n1_calc(alt_pressure, 1)"
+  ],
+  "position": "after",
+  "contentLines": [
+    "-- package-version|0.1.0-beta.1",
+    "    if B738_sfp27_calc.active() then",
+    "        B738DR_thr_takeoff_full_N1[0], B738DR_thr_takeoff_full_N1[1] = B738_takeoff_n1_calc(alt_pressure, 1)",
+    "    end"
+  ],
+  "legacyBlocks": []
+}

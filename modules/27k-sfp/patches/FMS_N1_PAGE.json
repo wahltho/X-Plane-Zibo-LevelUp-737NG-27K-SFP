@@ -1,0 +1,15 @@
+{
+  "format": "migrate-marked-block-v1",
+  "name": "FMS_N1_PAGE",
+  "beginMarker": "-- BEGIN SFP27 FMS_N1_PAGE",
+  "endMarker": "-- END SFP27 FMS_N1_PAGE",
+  "anchorLines": [
+    "function B738_fmc_n1_limit()"
+  ],
+  "position": "after",
+  "contentLines": [
+    "-- package-version|0.1.0-beta.1",
+    "    B738_sfp27_fms.sync()"
+  ],
+  "legacyBlocks": []
+}

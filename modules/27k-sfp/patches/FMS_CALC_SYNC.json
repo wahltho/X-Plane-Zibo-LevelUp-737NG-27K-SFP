@@ -1,0 +1,15 @@
+{
+  "format": "migrate-marked-block-v1",
+  "name": "FMS_CALC_SYNC",
+  "beginMarker": "-- BEGIN SFP27 FMS_CALC_SYNC",
+  "endMarker": "-- END SFP27 FMS_CALC_SYNC",
+  "anchorLines": [
+    "function B738_calc()"
+  ],
+  "position": "after",
+  "contentLines": [
+    "-- package-version|0.1.0-beta.1",
+    "    B738_sfp27_fms.sync()"
+  ],
+  "legacyBlocks": []
+}

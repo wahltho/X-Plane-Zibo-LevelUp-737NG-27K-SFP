@@ -1,0 +1,15 @@
+{
+  "format": "migrate-marked-block-v1",
+  "name": "CALC_FLIGHT_RESET",
+  "beginMarker": "-- BEGIN SFP27 CALC_FLIGHT_RESET",
+  "endMarker": "-- END SFP27 CALC_FLIGHT_RESET",
+  "anchorLines": [
+    "function flight_start() "
+  ],
+  "position": "after",
+  "contentLines": [
+    "-- package-version|0.1.0-beta.1",
+    "    B738_sfp27_calc.reset()"
+  ],
+  "legacyBlocks": []
+}

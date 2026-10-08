@@ -1,0 +1,17 @@
+{
+  "format": "migrate-marked-block-v1",
+  "name": "FMS_SFP_LABELS",
+  "beginMarker": "-- BEGIN SFP27 FMS_SFP_LABELS",
+  "endMarker": "-- END SFP27 FMS_SFP_LABELS",
+  "anchorLines": [
+    "end",
+    "",
+    "function check_livery()"
+  ],
+  "position": "before",
+  "contentLines": [
+    "-- package-version|0.1.0-beta.1",
+    "    B738_sfp27_fms.labels()"
+  ],
+  "legacyBlocks": []
+}

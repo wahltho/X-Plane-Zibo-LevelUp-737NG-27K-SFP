@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "status": "Reviewed public beta runtime package file selection",
+  "files": [
+    "README.md",
+    "RELEASE_NOTES.md",
+    ".gitignore",
+    "LICENSE",
+    "PREPARATION_STATUS.json",
+    "public-export-allowlist.json",
+    "package-manifest.json",
+    "mtk-ownership-policy.json",
+    "installer-manifest.json",
+    "z_Install.py",
+    "patchlib.py",
+    "docs/RECOVERY.md",
+    "payload/B738.sfp27_data.lua",
+    "payload/B738.sfp27_core.lua",
+    "payload/B738.sfp27_fms.lua",
+    "payload/B738.sfp27_calc.lua",
+    "payload/B738.sfp27_tablet.lua"
+  ],
+  "includeDeclaredPatchPayloadsFrom": "package-manifest.json",
+  "includeMtkModuleCopies": true,
+  "excluded": [
+    "Raw numeric audit JSON and provenance documents",
+    "Manual PDFs, page images and extraction/rendering tools",
+    "Internal reviews, source handoffs, tests and original-source fixtures",
+    "Original complete aircraft scripts, ACFs or plugins",
+    "Private forensic/disassembly evidence and C++ port",
+    "Simulator/install state, Git metadata, caches, build and release output"
+  ]
+}

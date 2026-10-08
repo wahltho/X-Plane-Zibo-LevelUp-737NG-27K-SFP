@@ -1,0 +1,190 @@
+{
+  "packageId": "wahltho.zibo-levelup-737ng.27k-sfp",
+  "displayName": "737-800WSFP2 27K (Beta)",
+  "repositoryUrl": "https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP",
+  "supportedProducts": [
+    "zibo-737ng",
+    "levelup-737ng"
+  ],
+  "moduleIds": [
+    "27k-sfp"
+  ],
+  "targetPaths": [
+    "plugins/xlua/scripts/B738.a_fms/B738.a_fms.lua",
+    "plugins/xlua/scripts/B738.a_fms/B738.sfp27_core.lua",
+    "plugins/xlua/scripts/B738.a_fms/B738.sfp27_data.lua",
+    "plugins/xlua/scripts/B738.a_fms/B738.sfp27_fms.lua",
+    "plugins/xlua/scripts/B738.calc/B738.calc.lua",
+    "plugins/xlua/scripts/B738.calc/B738.sfp27_calc.lua",
+    "plugins/xlua/scripts/B738.calc/B738.sfp27_core.lua",
+    "plugins/xlua/scripts/B738.calc/B738.sfp27_data.lua",
+    "plugins/xlua/scripts/B738.tablet/B738.sfp27_tablet.lua",
+    "plugins/xlua/scripts/B738.tablet/B738.tablet.lua"
+  ],
+  "standaloneEvidencePaths": [
+    ".sfp27-standalone",
+    ".sfp27-standalone.lock"
+  ],
+  "payloadPaths": [
+    "plugins/xlua/scripts/B738.a_fms/B738.sfp27_core.lua",
+    "plugins/xlua/scripts/B738.a_fms/B738.sfp27_data.lua",
+    "plugins/xlua/scripts/B738.a_fms/B738.sfp27_fms.lua",
+    "plugins/xlua/scripts/B738.calc/B738.sfp27_calc.lua",
+    "plugins/xlua/scripts/B738.calc/B738.sfp27_core.lua",
+    "plugins/xlua/scripts/B738.calc/B738.sfp27_data.lua",
+    "plugins/xlua/scripts/B738.tablet/B738.sfp27_tablet.lua"
+  ],
+  "markerNamespaces": [
+    {
+      "relativePath": "plugins/xlua/scripts/B738.a_fms/B738.a_fms.lua",
+      "namespace": "SFP27",
+      "blocks": [
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_AUTO_V1_CDU1",
+          "endMarker": "-- END SFP27 FMS_AUTO_V1_CDU1"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_AUTO_V1_CDU2",
+          "endMarker": "-- END SFP27 FMS_AUTO_V1_CDU2"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_AUTO_V2_CDU1",
+          "endMarker": "-- END SFP27 FMS_AUTO_V2_CDU1"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_AUTO_V2_CDU2",
+          "endMarker": "-- END SFP27 FMS_AUTO_V2_CDU2"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_AUTO_VR_CDU1",
+          "endMarker": "-- END SFP27 FMS_AUTO_VR_CDU1"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_AUTO_VR_CDU2",
+          "endMarker": "-- END SFP27 FMS_AUTO_VR_CDU2"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_CALC_SYNC",
+          "endMarker": "-- END SFP27 FMS_CALC_SYNC"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_CONFIG_LABELS",
+          "endMarker": "-- END SFP27 FMS_CONFIG_LABELS"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_DEFAULT_LABELS",
+          "endMarker": "-- END SFP27 FMS_DEFAULT_LABELS"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_FLIGHT_RESET",
+          "endMarker": "-- END SFP27 FMS_FLIGHT_RESET"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_LOAD",
+          "endMarker": "-- END SFP27 FMS_LOAD"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_MANUAL_V1_CDU1",
+          "endMarker": "-- END SFP27 FMS_MANUAL_V1_CDU1"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_MANUAL_V1_CDU2",
+          "endMarker": "-- END SFP27 FMS_MANUAL_V1_CDU2"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_MANUAL_V2_CDU1",
+          "endMarker": "-- END SFP27 FMS_MANUAL_V2_CDU1"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_MANUAL_V2_CDU2",
+          "endMarker": "-- END SFP27 FMS_MANUAL_V2_CDU2"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_MANUAL_VR_CDU1",
+          "endMarker": "-- END SFP27 FMS_MANUAL_VR_CDU1"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_MANUAL_VR_CDU2",
+          "endMarker": "-- END SFP27 FMS_MANUAL_VR_CDU2"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_N1_PAGE",
+          "endMarker": "-- END SFP27 FMS_N1_PAGE"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_N1_SYNC",
+          "endMarker": "-- END SFP27 FMS_N1_SYNC"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_SFP_LABELS",
+          "endMarker": "-- END SFP27 FMS_SFP_LABELS"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_TAKEOFF_PAGE",
+          "endMarker": "-- END SFP27 FMS_TAKEOFF_PAGE"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 FMS_UPLINK_SPEEDS",
+          "endMarker": "-- END SFP27 FMS_UPLINK_SPEEDS"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 UPSTREAM_RELEASE",
+          "endMarker": "-- END SFP27 UPSTREAM_RELEASE"
+        }
+      ],
+      "allowedCommentLines": []
+    },
+    {
+      "relativePath": "plugins/xlua/scripts/B738.calc/B738.calc.lua",
+      "namespace": "SFP27",
+      "blocks": [
+        {
+          "beginMarker": "-- BEGIN SFP27 CALC_FLIGHT_RESET",
+          "endMarker": "-- END SFP27 CALC_FLIGHT_RESET"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 CALC_FULL_TAKEOFF",
+          "endMarker": "-- END SFP27 CALC_FULL_TAKEOFF"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 CALC_GA_ALIAS",
+          "endMarker": "-- END SFP27 CALC_GA_ALIAS"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 CALC_LOAD",
+          "endMarker": "-- END SFP27 CALC_LOAD"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 CALC_N1",
+          "endMarker": "-- END SFP27 CALC_N1"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 CALC_SPEEDS",
+          "endMarker": "-- END SFP27 CALC_SPEEDS"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 CALC_TRIM",
+          "endMarker": "-- END SFP27 CALC_TRIM"
+        }
+      ],
+      "allowedCommentLines": []
+    },
+    {
+      "relativePath": "plugins/xlua/scripts/B738.tablet/B738.tablet.lua",
+      "namespace": "SFP27",
+      "blocks": [
+        {
+          "beginMarker": "-- BEGIN SFP27 TABLET_GUARD",
+          "endMarker": "-- END SFP27 TABLET_GUARD"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 TABLET_LOAD",
+          "endMarker": "-- END SFP27 TABLET_LOAD"
+        }
+      ],
+      "allowedCommentLines": []
+    }
+  ],
+  "signatures": [],
+  "recoveryInstruction": "Use the original standalone installer to uninstall first. Close all installers and X-Plane, verify the removed receipt and absence of SFP27 hooks/payloads, then retain the complete verified standalone state directory outside the aircraft before switching to MTK. Never delete backups or adopt patched files as originals."
+}

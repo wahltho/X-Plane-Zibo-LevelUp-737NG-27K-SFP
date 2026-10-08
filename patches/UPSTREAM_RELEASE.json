@@ -1,0 +1,15 @@
+{
+  "format": "migrate-marked-block-v1",
+  "name": "UPSTREAM_RELEASE",
+  "beginMarker": "-- BEGIN SFP27 UPSTREAM_RELEASE",
+  "endMarker": "-- END SFP27 UPSTREAM_RELEASE",
+  "anchorLines": [
+    "\tversion = \"v4.05.35\""
+  ],
+  "position": "after",
+  "contentLines": [
+    "-- package-version|0.1.0-beta.1",
+    "-- Supported source release: original 4.05.35."
+  ],
+  "legacyBlocks": []
+}
