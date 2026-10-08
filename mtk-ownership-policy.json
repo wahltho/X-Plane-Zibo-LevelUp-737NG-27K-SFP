@@ -11,27 +11,34 @@
   ],
   "targetPaths": [
     "plugins/xlua/scripts/B738.a_fms/B738.a_fms.lua",
+    "plugins/xlua/scripts/B738.a_fms/B738.sfp27_*",
     "plugins/xlua/scripts/B738.a_fms/B738.sfp27_core.lua",
     "plugins/xlua/scripts/B738.a_fms/B738.sfp27_data.lua",
     "plugins/xlua/scripts/B738.a_fms/B738.sfp27_fms.lua",
     "plugins/xlua/scripts/B738.calc/B738.calc.lua",
+    "plugins/xlua/scripts/B738.calc/B738.sfp27_*",
     "plugins/xlua/scripts/B738.calc/B738.sfp27_calc.lua",
     "plugins/xlua/scripts/B738.calc/B738.sfp27_core.lua",
     "plugins/xlua/scripts/B738.calc/B738.sfp27_data.lua",
+    "plugins/xlua/scripts/B738.tablet/B738.sfp27_*",
     "plugins/xlua/scripts/B738.tablet/B738.sfp27_tablet.lua",
     "plugins/xlua/scripts/B738.tablet/B738.tablet.lua"
   ],
   "standaloneEvidencePaths": [
+    ".sfp27-standalone/receipt.json",
     ".sfp27-standalone",
     ".sfp27-standalone.lock"
   ],
   "payloadPaths": [
+    "plugins/xlua/scripts/B738.a_fms/B738.sfp27_*",
     "plugins/xlua/scripts/B738.a_fms/B738.sfp27_core.lua",
     "plugins/xlua/scripts/B738.a_fms/B738.sfp27_data.lua",
     "plugins/xlua/scripts/B738.a_fms/B738.sfp27_fms.lua",
+    "plugins/xlua/scripts/B738.calc/B738.sfp27_*",
     "plugins/xlua/scripts/B738.calc/B738.sfp27_calc.lua",
     "plugins/xlua/scripts/B738.calc/B738.sfp27_core.lua",
     "plugins/xlua/scripts/B738.calc/B738.sfp27_data.lua",
+    "plugins/xlua/scripts/B738.tablet/B738.sfp27_*",
     "plugins/xlua/scripts/B738.tablet/B738.sfp27_tablet.lua"
   ],
   "markerNamespaces": [

@@ -18,7 +18,9 @@
     "payload/B738.sfp27_core.lua",
     "payload/B738.sfp27_fms.lua",
     "payload/B738.sfp27_calc.lua",
-    "payload/B738.sfp27_tablet.lua"
+    "payload/B738.sfp27_tablet.lua",
+    "standalone_guard.py",
+    "standalone-ownership.json"
   ],
   "includeDeclaredPatchPayloadsFrom": "package-manifest.json",
   "includeMtkModuleCopies": true,

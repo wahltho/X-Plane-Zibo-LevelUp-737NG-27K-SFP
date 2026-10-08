@@ -7,15 +7,15 @@
   "mtkIntegrationReady": true,
   "validation": {
     "standalone": {
-      "methods": 54,
-      "passed": 54,
-      "result": "PASS on final behavioral source"
+      "methods": 62,
+      "passed": 62,
+      "result": "PASS; MTK shared-file ownership, reserved namespace, transaction rechecks and native recovery"
     },
     "publicExport": {
       "methods": 14,
       "passed": 14,
-      "result": "PASS; additive ownership-policy contract and actual export tested",
-      "publicFileCount": 76,
+      "result": "PASS; current catalog policy and unchanged performance/runtime export",
+      "publicFileCount": 78,
       "modulePayloadCopies": 32,
       "runtimeTypedLeavesUnchanged": 5880
     },
@@ -26,13 +26,13 @@
     },
     "mtk": {
       "compiledCoreSha256": "65a32a608d66acf1106bcba7a3e036ef395af3d5fa56ae4835123c0bdeb0c9e5",
-      "catalogVersion": "1.16.0",
+      "catalogVersion": "1.17.0",
       "catalogSchema": 2,
-      "catalogSha256": "57b0d4a4f1a1a36c1acd1661b5d1fc05d4a4acf8de4fd90e919c5ac9ecbefc21",
-      "cases": 28,
-      "passed": 28,
+      "catalogSha256": "b5be077fa38e70123407c1cec88409c4e9f60127483a1ce2be6ca9dd8bfb1417",
+      "cases": 30,
+      "passed": 30,
       "failed": 0,
-      "scope": "Actual original new Core with explicitly supplied corrected current catalog; embedded/offline catalog must include state and lock evidence."
+      "scope": "Actual released Core with explicitly supplied catalog 1.17.0; original and shared VREF/Tablet ownership checked in both directions. Embedded/offline catalog must include full state and lock evidence."
     },
     "simulatorRuntime": "not-run; separate approval required",
     "standalonePackagingChecks": {
@@ -40,7 +40,28 @@
       "passed": 2,
       "result": "PASS; integrity and explicit disabled-fixture gate verified"
     },
-    "mtkPolicyContract": "Registered and structurally checked; actual new-Core owner/refusal/Restore/combined execution passed with corrected current catalog"
+    "mtkPolicyContract": "Registered and structurally checked; actual new-Core owner/refusal/Restore/combined execution passed with corrected current catalog",
+    "initialBetaPublication": {
+      "standaloneMethods": 54,
+      "exportMethods": 14,
+      "luaMethods": 12,
+      "mtkCases": 28,
+      "catalogVersion": "1.16.0",
+      "publicFileCount": 76,
+      "packageIntegritySha256": "0125d3390ff06cccf0d79c06d6aad440245cb01a7fe513866e43be7fa3be054d"
+    },
+    "standaloneInstallerRefresh": {
+      "date": "2026-10-08",
+      "packageVersionUnchanged": true,
+      "releaseTagUnchanged": true,
+      "patchManifestUnchanged": true,
+      "luaAndPerformancePayloadsUnchanged": true,
+      "legacyPublicBetaRoundtripPassed": true,
+      "legacyPublicAssetSha256": "bcfdd133e59794ce482db0c1fa5c12bb00fb1a0edbc8e1c5b218767b482088d8",
+      "sharedGuardTestsPassed": 28,
+      "vnavGuardIntegrationTestsPassed": 2,
+      "noSimulator": true
+    }
   },
   "remainingScopeLimits": [
     "No AFM/PD dispatch distances, optimum ATM or MTOW",

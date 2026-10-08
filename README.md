@@ -60,8 +60,8 @@ operations on three existing Lua scripts. Complete original aircraft scripts
 are not distributed. `package-manifest.json` uses supported MTK schema 3
 operations, module `27k-sfp`, optional and disabled by default, order 68.
 It uses `migrate-marked-block-v1`, `exact-text-replacements-v1` and `copy-file-v1`.
-The ownership contract is registered in catalog schema 2 / version 1.16.0.
-MTK integration was tested with Core 0.28.0 and that current catalog. Availability
+The ownership policy is registered in catalog schema 2 / version 1.17.0.
+Use MTK 0.28.0 or newer with the current catalog. Availability
 in the Toolkit's selectable download catalog is a separate catalog update;
 installing this package does not add or select a catalog entry automatically.
 
@@ -98,6 +98,14 @@ records block. Foreign edits outside owned hooks are preserved. Writes use
 whole-package preflight, backups, a journal, rollback, process checks and a
 lock. See [recovery](docs/RECOVERY.md).
 
+The installer also reads MTK's saved ownership records. If MTK manages any
+shared FMS, calculation or Tablet file, make the change through MTK. This check
+applies even if 27K has not been installed yet. Broken MTK state, unknown
+`B738.sfp27_*` files and malformed or case-changed SFP27 markers block writes.
+Ownership, receipts and originals are checked again during the transaction
+and before recovery. The existing standalone receipt and backup format stays
+compatible with the original beta installer.
+
 Use one installation owner. To switch from standalone to MTK, uninstall with
 the standalone installer first. Close all installers and X-Plane, verify the
 removed receipt and absence of SFP27 hooks/payloads, then retain the complete
@@ -110,7 +118,7 @@ adopt an already patched file as the original merely because its bytes match.
 catalog-schema-2 policy fragment for standalone evidence, seven payload paths
 and the complete reserved SFP27 marker namespace on all three scripts. It must
 be registered in the MTK catalog; the package manifest does not auto-register
-it. The registered policy and actual new Core passed 28 installer cases,
+it. The registered policy and actual released Core passed 30 installer cases,
 including genuine ownership refusal in both directions, unknown markers,
 receiptless state and locks, complete restore and VREF/Tablet combinations.
 Use MTK 0.28.0 or newer with the corrected current catalog. Its offline bundle

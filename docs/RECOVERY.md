@@ -48,6 +48,12 @@ Unknown nonempty lock state requires manual ownership investigation. The
 installer does not delete it. Clearing a lock never authorizes deleting its
 state/backup/journal directory or accepting unknown modified payloads.
 
+Recovery also checks MTK's ownership records and the reserved SFP27 files.
+If another installer has acquired a shared file, or unknown files or hooks
+have appeared, recovery stops and retains the journal and backups. Resolve
+the reported ownership conflict before retrying; deleting MTK state is not a
+supported way to authorize recovery.
+
 For a deliberate switch to MTK after a successful standalone uninstall, the
 catalog ownership contract rejects any remaining `.sfp27-standalone` state or
 lock directory, including a valid removed receipt. Close all accessing

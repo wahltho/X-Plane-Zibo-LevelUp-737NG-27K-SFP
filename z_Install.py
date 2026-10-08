@@ -20,6 +20,7 @@ import tempfile
 import uuid
 
 import patchlib
+import standalone_guard
 
 PACKAGE = Path(__file__).resolve().parent
 STATE_NAME = ".sfp27-standalone"
@@ -30,6 +31,71 @@ ALLOWED_FILES = {
     "B738.tablet": {"B738.tablet.lua", "B738.sfp27_tablet.lua"},
 }
 PACKAGE_ID = "wahltho.zibo-levelup-737ng.27k-sfp"
+
+
+class OwnershipBoundary:
+    """Catalog checks around the existing native receipt/journal transaction."""
+
+    def __init__(self, root, manifest):
+        absolute = Path(root).absolute()
+        standalone_guard.safe(Path(absolute.anchor), absolute.relative_to(absolute.anchor).as_posix())
+        self.root = root
+        contract = json.loads((PACKAGE / "standalone-ownership.json").read_bytes(), object_pairs_hook=unique_object)
+        if contract.get("schemaVersion") != 1 or contract.get("policy", {}).get("packageId") != PACKAGE_ID:
+            raise ValueError("Unsupported standalone ownership contract")
+        self.policy = contract["policy"]
+        self.targets = {op["relativePath"] for op in manifest["modules"][0]["targets"]}
+        if any(not any(standalone_guard.covered(p, r) for p in self.policy["targetPaths"])
+               for r in self.targets):
+            raise ValueError("Package target is outside its catalog ownership contract")
+        self.contents, self.modes = self.capture()
+        self.mtk = standalone_guard.check_mtk(root, self.policy["targetPaths"], PACKAGE_ID)
+        self.receipt = standalone_guard.read(root, STATE_NAME + "/receipt.json")
+        self.backups = {}
+        if self.receipt is not None:
+            receipt = validate_receipt(root, manifest, json.loads(self.receipt, object_pairs_hook=unique_object))
+            for relative, item in receipt["targets"].items():
+                if item["originalSha256"] is not None:
+                    path = STATE_NAME + "/backups/" + item["originalSha256"] + "/" + relative
+                    self.backups[path] = item["originalSha256"]
+
+    def capture(self):
+        paths = set(self.targets)
+        for pattern in self.policy["targetPaths"]:
+            for relative in standalone_guard.expand(self.root, pattern):
+                if relative not in self.targets and standalone_guard.read(self.root, relative) is not None:
+                    raise ValueError("Unknown file in reserved SFP27 scope: " + relative)
+                paths.add(relative)
+        contents, modes = {}, {}
+        for relative in sorted(paths):
+            content = standalone_guard.read(self.root, relative)
+            if relative not in self.targets:
+                continue
+            standalone_guard.marker_fingerprints(content, self.policy, relative)
+            contents[relative] = content
+            path = standalone_guard.safe(self.root, relative)
+            modes[relative] = path.stat().st_mode & 0o777 if content is not None else 0o644
+        return contents, modes
+
+    def recheck(self, contents=None, receipt=None):
+        expected = self.contents if contents is None else contents
+        observed, modes = self.capture()
+        if observed != expected or any(modes[r] != self.modes[r] for r in expected if expected[r] is not None):
+            raise ValueError("Aircraft target or reserved scope changed after preparation")
+        if standalone_guard.check_mtk(self.root, self.policy["targetPaths"], PACKAGE_ID) != self.mtk:
+            raise ValueError("MTK ownership state changed after preparation")
+        expected_receipt = self.receipt if receipt is None else receipt
+        if standalone_guard.read(self.root, STATE_NAME + "/receipt.json") != expected_receipt:
+            raise ValueError("Standalone receipt changed after preparation")
+        for relative, expected_hash in self.backups.items():
+            if digest(standalone_guard.read(self.root, relative) or b"") != expected_hash:
+                raise ValueError("Original backup changed after preparation: " + relative)
+
+
+class PreparedChanges(list):
+    def __init__(self, changes, ownership):
+        super().__init__(changes)
+        self.ownership = ownership
 
 
 def digest(data):
@@ -56,7 +122,7 @@ def safe_target(root, relative):
         raise ValueError("Out-of-scope aircraft target: " + relative)
     if parts[4] not in ALLOWED_FILES[parts[3]]:
         raise ValueError("Out-of-scope aircraft filename: " + relative)
-    path = root / relative
+    path = standalone_guard.safe(root, relative)
     for parent in [path] + list(path.parents):
         if parent == root:
             break
@@ -81,7 +147,7 @@ def verify_package():
 
 def state_file(root, relative):
     state = root / STATE_NAME
-    path = state / relative
+    path = standalone_guard.safe(root, STATE_NAME + "/" + relative)
     for parent in [path] + list(path.parents):
         if parent == root:
             break
@@ -266,19 +332,23 @@ def transform(contents, manifest, uninstall):
 
 
 def prepare(root, manifest, uninstall):
+    ownership = OwnershipBoundary(root, manifest)
     receipt = load_receipt(root, manifest)
     originals, modes = read_targets(root, manifest)
     check_content_ownership(originals, manifest, receipt is not None and receipt["state"] == "installed", uninstall)
     desired = transform(originals, manifest, uninstall)
-    return [(relative, originals[relative], new, modes[relative])
-            for relative, new in desired.items() if new != originals[relative]]
+    ownership.recheck()
+    return PreparedChanges([(relative, originals[relative], new, modes[relative])
+                            for relative, new in desired.items() if new != originals[relative]], ownership)
 
 
-def backup(root, state, changes):
+def backup(root, state, changes, ownership):
     for relative, old, _, mode in changes:
+        ownership.recheck()
         if old is None:
             continue
         path = state / "backups" / digest(old) / relative
+        standalone_guard.safe(root, path.relative_to(root).as_posix())
         # Walk before mkdir; a foreign backup tree is never followed.
         for parent in [path] + list(path.parents):
             if parent == state:
@@ -295,6 +365,10 @@ def backup(root, state, changes):
 
 def transaction(root, changes, uninstall):
     manifest = verify_package()
+    reviewed = getattr(changes, "ownership", None)
+    if reviewed is not None:
+        reviewed.recheck()
+    ownership = OwnershipBoundary(root, manifest)
     prior = check_ownership(root, manifest, uninstall)
     expected = {op["relativePath"] for op in manifest["modules"][0]["targets"]}
     delta = {r: (old, new, mode) for r, old, new, mode in changes}
@@ -335,7 +409,8 @@ def transaction(root, changes, uninstall):
         path = safe_target(root, relative)
         if (path.read_bytes() if path.exists() else None) != old:
             raise ValueError("Aircraft changed after preparation: " + relative)
-    state = root / STATE_NAME
+    ownership.recheck()
+    state = standalone_guard.safe(root, STATE_NAME)
     if state.is_symlink():
         raise ValueError("Symlink package state directory")
     state.mkdir(exist_ok=True)
@@ -344,7 +419,7 @@ def transaction(root, changes, uninstall):
         raise ValueError("Interrupted standalone transaction: run --recover before another operation")
     receipt_path = state_file(root, "receipt.json")
     receipt_before = receipt_path.read_bytes() if receipt_path.is_file() else None
-    backup(root, state, changes)
+    backup(root, state, changes, ownership)
     # Payloads before hooks on install; hooks before payload removal on uninstall.
     ordered = sorted(changes, key=lambda item: ("/B738.sfp27_" not in item[0]) != uninstall)
     journal = {"schemaVersion": 1, "packageId": PACKAGE_ID,
@@ -355,9 +430,12 @@ def transaction(root, changes, uninstall):
                "changes": [{"path": r, "before": digest(a) if a is not None else None,
                             "after": digest(b) if b is not None else None, "mode": m}
                            for r, a, b, m in ordered]}
+    ownership.recheck()
     atomic_write(journal_path, (json.dumps(journal, indent=2) + "\n").encode())
     try:
+        expected_contents = dict(before_contents)
         for relative, old, new, mode in ordered:
+            ownership.recheck(expected_contents)
             path = safe_target(root, relative)
             if (path.read_bytes() if path.exists() else None) != old:
                 raise ValueError("Concurrent target modification: " + relative)
@@ -365,6 +443,7 @@ def transaction(root, changes, uninstall):
                 path.unlink()
             else:
                 atomic_write(path, new, mode)
+            expected_contents[relative] = new
         for relative, _, new, _ in ordered:
             path = safe_target(root, relative)
             if (path.read_bytes() if path.exists() else None) != new:
@@ -378,7 +457,10 @@ def transaction(root, changes, uninstall):
         receipt = {**journal, "schemaVersion": 1, "packageVersion": manifest["packageVersion"],
                    "manifestSha256": digest((PACKAGE / "package-manifest.json").read_bytes()),
                    "targets": target_records, "state": "removed" if uninstall else "installed"}
-        atomic_write(receipt_path, (json.dumps(receipt, indent=2) + "\n").encode())
+        ownership.recheck(after_contents)
+        receipt_bytes = (json.dumps(receipt, indent=2) + "\n").encode()
+        atomic_write(receipt_path, receipt_bytes)
+        ownership.recheck(after_contents, receipt_bytes)
         journal_path.unlink()
     except BaseException:
         # Recovery checks the whole transaction before touching any target and
@@ -389,6 +471,7 @@ def transaction(root, changes, uninstall):
 
 
 def recover_transaction(root):
+    ownership = OwnershipBoundary(root, verify_package())
     journal_path = state_file(root, "pending.json")
     if not journal_path.is_file():
         if (root / STATE_NAME).exists():
@@ -490,7 +573,9 @@ def recover_transaction(root):
                    for relative, item in originals.items()}
         previous = (json.dumps({**journal, "uninstall": True, "state": "removed", "targets": targets}, indent=2) + "\n").encode()
         validate_receipt(root, manifest, json.loads(previous))
+    expected_contents = dict(ownership.contents)
     for path, current, old, mode in recovery:
+        ownership.recheck(expected_contents)
         if (path.read_bytes() if path.is_file() else None) != current:
             raise ValueError("Concurrent modification during recovery")
         if old is None:
@@ -498,13 +583,16 @@ def recover_transaction(root):
                 path.unlink()
         else:
             atomic_write(path, old, mode)
+        expected_contents[path.relative_to(root).as_posix()] = old
         if (path.read_bytes() if path.is_file() else None) != old:
             raise ValueError("Recovery readback mismatch")
     for relative, item in plan.items():
         path = safe_target(root, relative)
         if (digest(path.read_bytes()) if path.is_file() else None) != item["beforeSha256"]:
             raise ValueError("Concurrent target change before recovery receipt: " + relative)
+    ownership.recheck(before_contents)
     atomic_write(receipt_path, previous)
+    ownership.recheck(before_contents, previous)
     journal_path.unlink()
 
 
@@ -518,7 +606,7 @@ def ensure_offline():
 
 
 def acquire_lock(root, recover):
-    lock = root / (STATE_NAME + ".lock")
+    lock = standalone_guard.safe(root, STATE_NAME + ".lock")
     if lock.is_symlink():
         raise ValueError("Symlink installer lock")
     if lock.exists():
@@ -578,7 +666,9 @@ def main():
     status = json.loads((PACKAGE / "PREPARATION_STATUS.json").read_text())
     if not args.uninstall and not args.recover and not args.plan and not status["installReady"]:
         raise ValueError("Development source preparation only: validation and installation are not released")
-    root = args.aircraft.resolve(strict=True)
+    absolute = args.aircraft.expanduser().absolute()
+    standalone_guard.safe(Path(absolute.anchor), absolute.relative_to(absolute.anchor).as_posix())
+    root = absolute.resolve(strict=True)
     if not root.is_dir():
         raise ValueError("Expected aircraft root directory")
     if args.plan:

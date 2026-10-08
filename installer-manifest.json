@@ -4,8 +4,8 @@
   "packageVersion": "0.1.0-beta.1",
   "files": {
     "z_Install.py": {
-      "size": 31032,
-      "sha256": "eb78c2283473a4cdb3237f35b9e0da9e2e44160a70258feeee8e3816d52eec48"
+      "size": 36087,
+      "sha256": "df6e07fd2bca5de673a6e40f3bccf760a3833092cf5a9db7d53f7d63ab87841c"
     },
     "patchlib.py": {
       "size": 3700,
@@ -16,12 +16,12 @@
       "sha256": "62670408deaacb9fd86b77b2536b0aa13fda07a503d917ec26e658b68d4862c5"
     },
     "PREPARATION_STATUS.json": {
-      "size": 2560,
-      "sha256": "8e34832a55c92273c598b37a014d0671adc9d4c76d1db04df760a42819c4343f"
+      "size": 3478,
+      "sha256": "e6af113cba03adc8572b83dc4655c9237ba9588d4818723d1b1dbe0364a22fdd"
     },
     "mtk-ownership-policy.json": {
-      "size": 6583,
-      "sha256": "68cbee4ca638c0acecc918e5460941664c981ad2dd461f21a9305a49149c4032"
+      "size": 6933,
+      "sha256": "9a117df152e0a68ec7e9da6155ccce4d61b9dd7496b151aa9db5c9737572f230"
     },
     "payload/B738.sfp27_data.lua": {
       "size": 45390,
@@ -150,6 +150,14 @@
     "patches/TABLET_GUARD.json": {
       "size": 361,
       "sha256": "b17909dd6e214c67d8105e1f4698cd2c64ebedbb803c42144be59d45ffb64c56"
+    },
+    "standalone_guard.py": {
+      "size": 32872,
+      "sha256": "53aafbe3b0fcef26d732352cc3ec054a4dffe6114a4296440ce8bde8c0c2f294"
+    },
+    "standalone-ownership.json": {
+      "size": 7302,
+      "sha256": "5e3bae64689da7c3d8ad350e8be4acf39dad0cf4bb76e5359f7e173507d748a7"
     }
   }
 }

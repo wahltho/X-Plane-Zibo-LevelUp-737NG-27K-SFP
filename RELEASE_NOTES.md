@@ -1,5 +1,11 @@
 # v0.1.0-beta.1
 
+Installer refresh — 8 October 2026: the standalone installer now checks MTK
+ownership of shared Lua files, the entire reserved SFP27 namespace and unknown
+companion files. It rechecks ownership before writes and during recovery.
+Existing beta receipts and original backups remain supported. Patch version,
+performance tables, Lua payloads and the MTK patch manifest are unchanged.
+
 First installable public beta for upstream Zibo 4.05.35 and the corresponding
 LevelUp passenger 737-800 with original .35 Lua and SFP enabled.
 
