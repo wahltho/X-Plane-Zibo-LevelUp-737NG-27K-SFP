@@ -32,7 +32,7 @@
       "cases": 30,
       "passed": 30,
       "failed": 0,
-      "scope": "Actual released Core with explicitly supplied catalog 1.17.0; original and shared VREF/Tablet ownership checked in both directions. Embedded/offline catalog must include full state and lock evidence."
+      "scope": "Earlier 0.28.0 integration check with explicitly supplied catalog 1.17.0; original and shared VREF/Tablet ownership checked in both directions. The offline-bundle condition applied to that earlier application; MTK 0.28.1 uses the online catalog and verified cache."
     },
     "simulatorRuntime": "not-run; separate approval required",
     "standalonePackagingChecks": {
@@ -72,7 +72,7 @@
   "openNumericalConvention": "Exact interpolation/rounding convention remains unverified",
   "mtkIntegrationRequirements": [
     "MTK 0.28.0 or newer with catalog schema2 and registered full state/lock policy",
-    "Corrected policy must also be included in the MTK offline bundle",
+    "MTK 0.28.1 loads the online catalog and verified cache; no embedded offline catalog remains",
     "Selectable download/group registration belongs to the MTK catalog project"
   ],
   "mtkOwnershipPolicy": "mtk-ownership-policy.json",

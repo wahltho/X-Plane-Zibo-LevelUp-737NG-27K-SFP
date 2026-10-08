@@ -4,8 +4,8 @@
   "packageVersion": "0.1.0-beta.1",
   "files": {
     "z_Install.py": {
-      "size": 36087,
-      "sha256": "df6e07fd2bca5de673a6e40f3bccf760a3833092cf5a9db7d53f7d63ab87841c"
+      "size": 36441,
+      "sha256": "538282d06c2651a488cbad29c5b2ac3b8a4bed82f44badd775860fce9dfd1c3b"
     },
     "patchlib.py": {
       "size": 3700,
@@ -13,11 +13,11 @@
     },
     "package-manifest.json": {
       "size": 15763,
-      "sha256": "62670408deaacb9fd86b77b2536b0aa13fda07a503d917ec26e658b68d4862c5"
+      "sha256": "2b6cfdbeccc9318ec7620e23331fdd117abc55d1073cc82e508b1a9c7f3844c7"
     },
     "PREPARATION_STATUS.json": {
-      "size": 3478,
-      "sha256": "e6af113cba03adc8572b83dc4655c9237ba9588d4818723d1b1dbe0364a22fdd"
+      "size": 3570,
+      "sha256": "076f5ba3e3630d8aaf302b5f8d930388fb47021417d2af76d438a73e240ed047"
     },
     "mtk-ownership-policy.json": {
       "size": 6933,
@@ -88,8 +88,8 @@
       "sha256": "4aced1ef491269470579249e18143e9277eae077d1c05258a024c7a03a35b8fb"
     },
     "patches/FMS_FLIGHT_RESET.json": {
-      "size": 368,
-      "sha256": "dba26462c38c058b0446d5c1a0beca4989574d0ccfa5e5d6f884c3a19731c110"
+      "size": 424,
+      "sha256": "357ee7523717226b2ad07b8edf18d33daa2b43bd086bccb59deb06c39db514db"
     },
     "patches/CALC_FLIGHT_RESET.json": {
       "size": 373,

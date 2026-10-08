@@ -4,9 +4,10 @@
   "beginMarker": "-- BEGIN SFP27 FMS_FLIGHT_RESET",
   "endMarker": "-- END SFP27 FMS_FLIGHT_RESET",
   "anchorLines": [
-    "function flight_start()"
+    "\tsimDR_latitude = simDR_latitude0",
+    "\tsimDR_longitude = simDR_longitude0"
   ],
-  "position": "after",
+  "position": "before",
   "contentLines": [
     "-- package-version|0.1.0-beta.1",
     "    B738_sfp27_fms.reset()"

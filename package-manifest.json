@@ -103,8 +103,8 @@
         },
         {
           "path": "patches/FMS_FLIGHT_RESET.json",
-          "size": 368,
-          "sha256": "dba26462c38c058b0446d5c1a0beca4989574d0ccfa5e5d6f884c3a19731c110"
+          "size": 424,
+          "sha256": "357ee7523717226b2ad07b8edf18d33daa2b43bd086bccb59deb06c39db514db"
         },
         {
           "path": "patches/CALC_FLIGHT_RESET.json",

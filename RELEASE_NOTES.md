@@ -1,6 +1,14 @@
 # v0.1.0-beta.1
 
-Installer refresh — 8 October 2026: the standalone installer now checks MTK
+MTK catalog integration refresh — 8 October 2026: the FMS reset hook now uses
+an insertion point that also works with LevelUp's required Weight & Balance
+patch. The installer recognizes the previous beta manifest while still
+checking its complete receipt, payloads and original backups. Version, release
+tag, runtime Lua and performance tables are unchanged. Catalog 1.18.0 offers
+27K as an optional, unselected Beta module for both Zibo and LevelUp.
+Simulator validation remains open.
+
+Earlier installer refresh — 8 October 2026: the standalone installer now checks MTK
 ownership of shared Lua files, the entire reserved SFP27 namespace and unknown
 companion files. It rechecks ownership before writes and during recovery.
 Existing beta receipts and original backups remain supported. Patch version,
@@ -26,6 +34,6 @@ ownership/restore. Real simulator callback timing and calibrated thrust remain
 unverified. Please report aircraft version/configuration, conditions, selected
 rating/temperature, N1, V-speeds and any log error when testing.
 
-Download/catalog registration in MTK is separate from this source release.
-Use one installation owner and follow the [installation instructions](README.md)
+Use MTK 0.28.0 or newer with catalog 1.18.0 or later, or the standalone
+installer. Use one installation owner and follow the [installation instructions](README.md)
 and [recovery procedure](docs/RECOVERY.md).

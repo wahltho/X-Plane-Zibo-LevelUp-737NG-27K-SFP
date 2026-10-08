@@ -60,10 +60,23 @@ operations on three existing Lua scripts. Complete original aircraft scripts
 are not distributed. `package-manifest.json` uses supported MTK schema 3
 operations, module `27k-sfp`, optional and disabled by default, order 68.
 It uses `migrate-marked-block-v1`, `exact-text-replacements-v1` and `copy-file-v1`.
-The ownership policy is registered in catalog schema 2 / version 1.17.0.
-Use MTK 0.28.0 or newer with the current catalog. Availability
-in the Toolkit's selectable download catalog is a separate catalog update;
-installing this package does not add or select a catalog entry automatically.
+The ownership policy is registered in catalog schema 2. Catalog 1.18.0 adds
+the selectable Beta module to both Zibo and LevelUp patch groups.
+Use MTK 0.28.0 or newer with that catalog or a later version. The patch remains
+optional and is not selected automatically.
+
+### Install through MTK
+
+1. Close X-Plane. Start MTK with an internet connection and select the aircraft.
+2. Let MTK refresh its catalog, then review the product's patch package.
+3. Under Advanced, select **737-800WSFP2 27K / SFP (Beta)** and apply the
+   reviewed selection through MTK. Keep any already installed patches selected.
+4. Restart X-Plane completely. Enable SFP on the supported passenger -800.
+
+MTK can add this module when it already manages the shared Lua files, including
+the required LevelUp maintenance patches. A standalone installation must first
+be removed through its own installer; matching file hashes alone do not prove
+ownership or a complete restore chain.
 
 ### Standalone install and uninstall
 
@@ -121,9 +134,10 @@ be registered in the MTK catalog; the package manifest does not auto-register
 it. The registered policy and actual released Core passed 30 installer cases,
 including genuine ownership refusal in both directions, unknown markers,
 receiptless state and locks, complete restore and VREF/Tablet combinations.
-Use MTK 0.28.0 or newer with the corrected current catalog. Its offline bundle
-must also include the complete `.sfp27-standalone` and lock evidence rules;
-an older application cannot gain this protection from package metadata alone.
+Use MTK 0.28.0 or newer with the corrected current catalog. MTK 0.28.1 obtains
+the catalog online and keeps a verified cache; it has no embedded offline
+catalog. The catalog must contain the full `.sfp27-standalone` directory and
+lock evidence rules. Package metadata alone does not register those rules.
 
 ## Performance and validation boundaries
 

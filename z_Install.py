@@ -204,7 +204,13 @@ def validate_receipt(root, manifest, receipt):
         raise ValueError("Foreign standalone state")
     if (type(receipt.get("schemaVersion")) is not int or receipt["schemaVersion"] != 1
             or receipt.get("packageVersion") != manifest["packageVersion"]
-            or receipt.get("manifestSha256") != digest((PACKAGE / "package-manifest.json").read_bytes())
+            or receipt.get("manifestSha256") not in {
+                digest((PACKAGE / "package-manifest.json").read_bytes()),
+                # Same beta before the W&B-compatible reset anchor. Targets,
+                # hook bodies and runtime payloads are identical; the complete
+                # receipt, originals and installed hooks are still verified.
+                "62670408deaacb9fd86b77b2536b0aa13fda07a503d917ec26e658b68d4862c5",
+            }
             or receipt.get("state") not in ("installed", "removed")
             or receipt.get("uninstall") is not (receipt.get("state") == "removed")):
         raise ValueError("Unsupported/incomplete standalone receipt; retain original backups")
