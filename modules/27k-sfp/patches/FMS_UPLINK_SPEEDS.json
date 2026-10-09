@@ -8,10 +8,19 @@
   ],
   "position": "after",
   "contentLines": [
-    "-- package-version|0.1.0-beta.1",
+    "-- package-version|0.1.0-beta.2",
     "    B738_sfp27_fms.manual(\"v1\")",
     "    B738_sfp27_fms.manual(\"vr\")",
     "    B738_sfp27_fms.manual(\"v2\")"
   ],
-  "legacyBlocks": []
+  "legacyBlocks": [
+    [
+      "-- BEGIN SFP27 FMS_UPLINK_SPEEDS",
+      "-- package-version|0.1.0-beta.1",
+      "    B738_sfp27_fms.manual(\"v1\")",
+      "    B738_sfp27_fms.manual(\"vr\")",
+      "    B738_sfp27_fms.manual(\"v2\")",
+      "-- END SFP27 FMS_UPLINK_SPEEDS"
+    ]
+  ]
 }

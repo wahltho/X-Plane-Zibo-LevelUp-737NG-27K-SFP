@@ -4,6 +4,7 @@ local core = B738_sfp27_core
 local fms = {}
 local automatic = {}
 local last_key = nil
+local last_configuration = nil
 
 SFP27DR_active = create_dataref("laminar/B738/sfp27/profile_active", "number")
 SFP27DR_input_key = create_dataref("laminar/B738/sfp27/input_key", "string")
@@ -35,6 +36,18 @@ end
 
 local function get_speed(name)
     if name == "v1" then return v1_set elseif name == "vr" then return vr_set else return v2_set end
+end
+
+local function source_value(value)
+    return tostring(tonumber(value) or value)
+end
+
+local function clear_automatic()
+    for name, value in pairs(automatic) do
+        if get_speed(name) == value then set_speed(name, "---") end
+    end
+    automatic = {}
+    verify_to_spd = 0
 end
 
 function fms.labels()
@@ -74,22 +87,27 @@ function fms.sync()
     fms.labels()
     if not ground_editable() then return end
     if SFP27DR_active == 1 then validate_atm() end
-    local key = "OFF"
+    local key, configuration = "OFF", "OFF"
     if SFP27DR_active == 1 then
-        -- Raw FMC sources, before B738_calc republishes them as DataRefs.
-        key = table.concat({tostring(B738DR_b737_variant), tostring(B738DR_73x),
-            tostring(to), tostring(to_1), tostring(to_2), tostring(sel_temp), tostring(oat),
-            tostring(gw_lbs), tostring(flaps), tostring(cg), tostring(rw_cond),
-            tostring(ref_rwy), tostring(rw_wind_dir), tostring(rw_wind_spd),
-            tostring(rw_slope), tostring(rw_hdg), string.format("%.0f", SFP27DR_altitude),
+        -- Explicit configuration sources are separate from live GW/PA/TAT.
+        -- Fuel burn and sensor updates request a fresh calculation, without
+        -- revoking pilot-confirmed speeds or publishing an unavailable N1.
+        configuration = table.concat({tostring(B738DR_b737_variant), tostring(B738DR_73x),
+            tostring(to), tostring(to_1), tostring(to_2), source_value(sel_temp), source_value(oat),
+            source_value(zfw_lbs), source_value(flaps), source_value(cg), tostring(rw_cond),
+            tostring(ref_rwy), source_value(rw_wind_dir), source_value(rw_wind_spd),
+            source_value(rw_slope), source_value(rw_hdg),
             tostring(SFP27DR_bleed1), tostring(SFP27DR_bleed2), tostring(SFP27DR_pack1),
             tostring(SFP27DR_pack2), tostring(SFP27DR_isolation),
-            tostring(B738DR_aspirated_probe),
+            tostring(B738DR_aspirated_probe), tostring(ref_icao)}, "|")
+        -- Raw FMC sources, before B738_calc republishes them as DataRefs.
+        key = table.concat({configuration, source_value(gw_lbs),
+            string.format("%.0f", SFP27DR_altitude),
             B738DR_aspirated_probe ~= 0 and oat == "****" and string.format("%.1f", simDR_TAT) or "manual",
-            tostring(ref_icao)}, "|")
+            }, "|")
     end
     if key ~= last_key or previous ~= SFP27DR_active then
-        if previous == 1 or SFP27DR_active == 1 then
+        if previous ~= SFP27DR_active then
             -- Do not relabel a previous profile's numeric thrust as 27K while
             -- waiting for the next Calc publication. Keep original MAN/
             -- unavailable handling as the consumer of this zero sentinel.
@@ -100,25 +118,41 @@ function fms.sync()
             fmc_full_thrust, fmc_full_thrust2, fmc_dto_thrust, fmc_dto_thrust2 = 0, 0, 0, 0
             B738DR_fms_v1_calc, B738DR_fms_vr_calc, B738DR_fms_v2_calc = 0, 0, 0
             B738DR_trim_calc = 0
-            for name, value in pairs(automatic) do
-                if get_speed(name) == value then set_speed(name, "---") end
-            end
-            automatic = {}
-            verify_to_spd = 0
+            clear_automatic()
+        elseif SFP27DR_active == 1 and configuration ~= last_configuration then
+            -- Real FMC/config edits invalidate automatic acceptance, but the
+            -- producer replaces N1 normally. Zeroing it here would cause a
+            -- mode-13 frame and could disarm the native A/T on the ground.
+            clear_automatic()
         end
         SFP27DR_input_key = key
         last_key = key
+        last_configuration = configuration
     end
-    if SFP27DR_active == 1 then
+    if SFP27DR_active == 1 and SFP27DR_input_key == SFP27DR_calculated_key then
         local values = {v1 = B738DR_fms_v1_calc, vr = B738DR_fms_vr_calc, v2 = B738DR_fms_v2_calc}
+        local needs_verify, invalidated = false, false
         for name, value in pairs(automatic) do
             if get_speed(name) ~= value then
                 automatic[name] = nil
-            elseif tonumber(value) ~= values[name] then
+            elseif values[name] == nil or values[name] <= 0 then
                 set_speed(name, "---")
                 automatic[name] = nil
-                verify_to_spd = 0
+                invalidated = true
+            elseif tonumber(value) ~= values[name] then
+                -- Use the original visible confirmation workflow. A fresh
+                -- background candidate must not erase accepted PFD speeds.
+                needs_verify = true
             end
+        end
+        if needs_verify then
+            if verify_to_spd ~= 1 then
+                add_fmc_msg(VERIFY_TO_SPEEDS, 2, 0)
+                add_fmc_msg(VERIFY_TO_SPEEDS, 2, 1)
+            end
+            verify_to_spd = 1
+        elseif invalidated then
+            verify_to_spd = 0
         end
     end
 end
@@ -144,7 +178,7 @@ function fms.manual(name)
 end
 
 function fms.reset()
-    automatic, last_key = {}, nil
+    automatic, last_key, last_configuration = {}, nil, nil
     SFP27DR_active, SFP27DR_n1_valid = 0, 0
     SFP27DR_input_key, SFP27DR_calculated_key = "", ""
 end

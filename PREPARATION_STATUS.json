@@ -1,67 +1,17 @@
 {
-  "packageVersion": "0.1.0-beta.1",
-  "status": "Public beta authorized; source-reviewed and dry-tested; simulator validation remains open",
+  "packageVersion": "0.1.0-beta.2",
+  "status": "Public beta.2 publication authorized after source owner-chain audit; new dry-test execution not authorized yet; simulator validation open",
   "configuration": "737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2 / FAA Category C/N brakes",
   "installReady": true,
   "releaseReady": true,
   "mtkIntegrationReady": true,
   "validation": {
-    "standalone": {
-      "methods": 62,
-      "passed": 62,
-      "result": "PASS; MTK shared-file ownership, reserved namespace, transaction rechecks and native recovery"
-    },
-    "publicExport": {
-      "methods": 14,
-      "passed": 14,
-      "result": "PASS; current catalog policy and unchanged performance/runtime export",
-      "publicFileCount": 78,
-      "modulePayloadCopies": 32,
-      "runtimeTypedLeavesUnchanged": 5880
-    },
-    "lua": {
-      "methods": 12,
-      "passed": 12,
-      "result": "PASS; 5880 typed numeric/missing leaves and rating keys unchanged"
-    },
-    "mtk": {
-      "compiledCoreSha256": "65a32a608d66acf1106bcba7a3e036ef395af3d5fa56ae4835123c0bdeb0c9e5",
-      "catalogVersion": "1.17.0",
-      "catalogSchema": 2,
-      "catalogSha256": "b5be077fa38e70123407c1cec88409c4e9f60127483a1ce2be6ca9dd8bfb1417",
-      "cases": 30,
-      "passed": 30,
-      "failed": 0,
-      "scope": "Earlier 0.28.0 integration check with explicitly supplied catalog 1.17.0; original and shared VREF/Tablet ownership checked in both directions. The offline-bundle condition applied to that earlier application; MTK 0.28.1 uses the online catalog and verified cache."
-    },
-    "simulatorRuntime": "not-run; separate approval required",
-    "standalonePackagingChecks": {
-      "methods": 2,
-      "passed": 2,
-      "result": "PASS; integrity and explicit disabled-fixture gate verified"
-    },
-    "mtkPolicyContract": "Registered and structurally checked; actual new-Core owner/refusal/Restore/combined execution passed with corrected current catalog",
-    "initialBetaPublication": {
-      "standaloneMethods": 54,
-      "exportMethods": 14,
-      "luaMethods": 12,
-      "mtkCases": 28,
-      "catalogVersion": "1.16.0",
-      "publicFileCount": 76,
-      "packageIntegritySha256": "0125d3390ff06cccf0d79c06d6aad440245cb01a7fe513866e43be7fa3be054d"
-    },
-    "standaloneInstallerRefresh": {
-      "date": "2026-10-08",
-      "packageVersionUnchanged": true,
-      "releaseTagUnchanged": true,
-      "patchManifestUnchanged": true,
-      "luaAndPerformancePayloadsUnchanged": true,
-      "legacyPublicBetaRoundtripPassed": true,
-      "legacyPublicAssetSha256": "bcfdd133e59794ce482db0c1fa5c12bb00fb1a0edbc8e1c5b218767b482088d8",
-      "sharedGuardTestsPassed": 28,
-      "vnavGuardIntegrationTestsPassed": 2,
-      "noSimulator": true
-    }
+    "sourceAudit": "Manual owner-chain source audit complete; independent review not claimed for beta.2",
+    "lua": "not-run for beta.2; separate explicit approval requested",
+    "standalone": "not-run for beta.2; separate explicit approval requested",
+    "publicExport": "Publication integrity/inventory and byte readback required; new export dry suite not run",
+    "mtk": "Current catalog 1.18.0 latest-release resolver inspected read-only; beta.2 execution not yet checked",
+    "simulatorRuntime": "not-run; runtime and exact native A/T incident remain open"
   },
   "remainingScopeLimits": [
     "No AFM/PD dispatch distances, optimum ATM or MTOW",
@@ -78,5 +28,66 @@
   "mtkOwnershipPolicy": "mtk-ownership-policy.json",
   "mtkPolicyAutomaticallyRegistered": false,
   "mtkPolicyRegisteredInInspectedCatalog": true,
-  "simulatorValidated": false
+  "simulatorValidated": false,
+  "previousBetaValidation": {
+    "packageVersion": "0.1.0-beta.1",
+    "validation": {
+      "standalone": {
+        "methods": 62,
+        "passed": 62,
+        "result": "PASS; MTK shared-file ownership, reserved namespace, transaction rechecks and native recovery"
+      },
+      "publicExport": {
+        "methods": 14,
+        "passed": 14,
+        "result": "PASS; current catalog policy and unchanged performance/runtime export",
+        "publicFileCount": 78,
+        "modulePayloadCopies": 32,
+        "runtimeTypedLeavesUnchanged": 5880
+      },
+      "lua": {
+        "methods": 12,
+        "passed": 12,
+        "result": "PASS; 5880 typed numeric/missing leaves and rating keys unchanged"
+      },
+      "mtk": {
+        "compiledCoreSha256": "65a32a608d66acf1106bcba7a3e036ef395af3d5fa56ae4835123c0bdeb0c9e5",
+        "catalogVersion": "1.17.0",
+        "catalogSchema": 2,
+        "catalogSha256": "b5be077fa38e70123407c1cec88409c4e9f60127483a1ce2be6ca9dd8bfb1417",
+        "cases": 30,
+        "passed": 30,
+        "failed": 0,
+        "scope": "Earlier 0.28.0 integration check with explicitly supplied catalog 1.17.0; original and shared VREF/Tablet ownership checked in both directions. The offline-bundle condition applied to that earlier application; MTK 0.28.1 uses the online catalog and verified cache."
+      },
+      "simulatorRuntime": "not-run; separate approval required",
+      "standalonePackagingChecks": {
+        "methods": 2,
+        "passed": 2,
+        "result": "PASS; integrity and explicit disabled-fixture gate verified"
+      },
+      "mtkPolicyContract": "Registered and structurally checked; actual new-Core owner/refusal/Restore/combined execution passed with corrected current catalog",
+      "initialBetaPublication": {
+        "standaloneMethods": 54,
+        "exportMethods": 14,
+        "luaMethods": 12,
+        "mtkCases": 28,
+        "catalogVersion": "1.16.0",
+        "publicFileCount": 76,
+        "packageIntegritySha256": "0125d3390ff06cccf0d79c06d6aad440245cb01a7fe513866e43be7fa3be054d"
+      },
+      "standaloneInstallerRefresh": {
+        "date": "2026-10-08",
+        "packageVersionUnchanged": true,
+        "releaseTagUnchanged": true,
+        "patchManifestUnchanged": true,
+        "luaAndPerformancePayloadsUnchanged": true,
+        "legacyPublicBetaRoundtripPassed": true,
+        "legacyPublicAssetSha256": "bcfdd133e59794ce482db0c1fa5c12bb00fb1a0edbc8e1c5b218767b482088d8",
+        "sharedGuardTestsPassed": 28,
+        "vnavGuardIntegrationTestsPassed": 2,
+        "noSimulator": true
+      }
+    }
+  }
 }

@@ -4,17 +4,31 @@
     {
       "name": "SFP27 separate full-TO and GA owners",
       "oldLines": [
+        "\t\t\tB738DR_thr_goaround_N1[0], B738DR_thr_goaround_N1[1] = B738_ga_n1_calc(alt_pressure2)",
         "\t\t\tB738DR_thr_takeoff_full_N1[0] = B738DR_thr_goaround_N1[0]",
         "\t\t\tB738DR_thr_takeoff_full_N1[1] = B738DR_thr_goaround_N1[1]"
       ],
       "newLines": [
+        "\t\t\tB738DR_thr_goaround_N1[0], B738DR_thr_goaround_N1[1] = B738_ga_n1_calc(alt_pressure2)",
         "-- BEGIN SFP27 CALC_GA_ALIAS",
-        "-- package-version|0.1.0-beta.1",
+        "-- package-version|0.1.0-beta.2",
         "            if not B738_sfp27_calc.active() then",
         "\t\t\tB738DR_thr_takeoff_full_N1[0] = B738DR_thr_goaround_N1[0]",
         "\t\t\tB738DR_thr_takeoff_full_N1[1] = B738DR_thr_goaround_N1[1]",
         "            end",
         "-- END SFP27 CALC_GA_ALIAS"
+      ],
+      "legacyNewLines": [
+        [
+          "\t\t\tB738DR_thr_goaround_N1[0], B738DR_thr_goaround_N1[1] = B738_ga_n1_calc(alt_pressure2)",
+          "-- BEGIN SFP27 CALC_GA_ALIAS",
+          "-- package-version|0.1.0-beta.1",
+          "            if not B738_sfp27_calc.active() then",
+          "\t\t\tB738DR_thr_takeoff_full_N1[0] = B738DR_thr_goaround_N1[0]",
+          "\t\t\tB738DR_thr_takeoff_full_N1[1] = B738DR_thr_goaround_N1[1]",
+          "            end",
+          "-- END SFP27 CALC_GA_ALIAS"
+        ]
       ]
     }
   ]

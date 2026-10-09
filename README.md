@@ -1,6 +1,6 @@
 # Zibo / LevelUp 737-800WSFP2 27K patch
 
-**0.1.0-beta.1 — installable public beta; simulator validation remains open.**
+**0.1.0-beta.2 — ground V-speed/N1 lifecycle fix; simulator validation remains open.**
 
 This patch implements **737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2**, with
 FAA Category C/N brakes, for upstream Zibo 4.05.35 Lua and the corresponding
@@ -9,7 +9,7 @@ LevelUp passenger 737-800. It includes the runtime performance tables for full
 unchanged. No private C++ plugin is required.
 
 Public repository: [X-Plane-Zibo-LevelUp-737NG-27K-SFP](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP).
-Download the [v0.1.0-beta.1 package](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP/releases/tag/v0.1.0-beta.1).
+Download the [v0.1.0-beta.2 package](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP/releases/tag/v0.1.0-beta.2).
 See [release notes](RELEASE_NOTES.md) for scope and validation.
 
 ## Changes existing Zibo SFP calculations
@@ -40,6 +40,10 @@ patch does not claim universal SFP1/SFP2/SFP3 applicability.
   do not borrow another aircraft's tables or extrapolate beyond the data.
 - Suppression of unsupported Tablet takeoff-distance and optimized ATM/MTOW
   results, including stale results from an earlier calculation.
+- Background pressure-altitude, automatic ambient-temperature and fuel-weight
+  updates preserve confirmed speeds and valid N1 targets. Changed speed
+  candidates use the existing VERIFY TAKEOFF SPEEDS display; explicit
+  configuration edits and genuinely unavailable results retain validation.
 
 ## Aircraft scope
 
@@ -77,6 +81,19 @@ MTK can add this module when it already manages the shared Lua files, including
 the required LevelUp maintenance patches. A standalone installation must first
 be removed through its own installer; matching file hashes alone do not prove
 ownership or a complete restore chain.
+
+### Updating beta.1
+
+For an MTK-owned installation, update the existing patch selection through MTK
+and keep its other modules selected. The catalog reads this patch's latest
+release; no manual copy of aircraft scripts is needed.
+
+For a standalone beta.1 installation, close X-Plane and uninstall using the
+retained **beta.1** installer first. Confirm successful removal, then retain
+the complete verified `.sfp27-standalone` state/backups outside the aircraft.
+Install beta.2 from its extracted ZIP. The beta.2 installer deliberately refuses
+a beta.1 receipt; it does not adopt another version's original-backup chain.
+Do not delete backups, manually remove hooks, or combine installation owners.
 
 ### Standalone install and uninstall
 
@@ -116,8 +133,8 @@ shared FMS, calculation or Tablet file, make the change through MTK. This check
 applies even if 27K has not been installed yet. Broken MTK state, unknown
 `B738.sfp27_*` files and malformed or case-changed SFP27 markers block writes.
 Ownership, receipts and originals are checked again during the transaction
-and before recovery. The existing standalone receipt and backup format stays
-compatible with the original beta installer.
+and before recovery. The receipt/backup format remains unchanged; ownership
+and uninstall are deliberately restricted to the matching package version.
 
 Use one installation owner. To switch from standalone to MTK, uninstall with
 the standalone installer first. Close all installers and X-Plane, verify the
@@ -131,7 +148,7 @@ adopt an already patched file as the original merely because its bytes match.
 catalog-schema-2 policy fragment for standalone evidence, seven payload paths
 and the complete reserved SFP27 marker namespace on all three scripts. It must
 be registered in the MTK catalog; the package manifest does not auto-register
-it. The registered policy and actual released Core passed 30 installer cases,
+it. For beta.1, the registered policy and actual released Core passed 30 installer cases,
 including genuine ownership refusal in both directions, unknown markers,
 receiptless state and locks, complete restore and VREF/Tablet combinations.
 Use MTK 0.28.0 or newer with the corrected current catalog. MTK 0.28.1 obtains
@@ -155,8 +172,10 @@ Linux plugin's N1-to-force interface, but does not prove calibrated installed
 Unavailable N1 retains original MAN/unavailable handling; a plugin fallback
 is not a calculated value from this profile.
 
-The package passed independent review and disposable-fixture dry tests.
-Those checks do not constitute simulator or actual-thrust validation.
+The previous beta passed independent review and disposable-fixture dry tests.
+Validation of the lifecycle correction is recorded separately below and in
+the status file; earlier PASS results do not validate changed runtime code.
+These checks do not constitute simulator or actual-thrust validation.
 Current status and activation limits are recorded in
 [PREPARATION_STATUS.json](PREPARATION_STATUS.json).
 

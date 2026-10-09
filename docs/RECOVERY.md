@@ -1,7 +1,15 @@
 # Standalone interruption recovery
 
-This is the public beta installer contract, validated on disposable fixtures.
+This is the public beta installer contract. Beta.1 was validated on disposable
+fixtures; the current beta.2 verification status is in RELEASE_NOTES.md.
 Installation and uninstall are enabled; simulator validation remains open.
+
+Keep the matching extracted package: ownership, uninstall and interruption
+recovery require that same package version. To update a standalone beta.1,
+uninstall with beta.1 first, verify removal, and retain its complete state and
+backups outside the aircraft before installing beta.2. A beta.2 installer
+deliberately refuses a beta.1 receipt or journal. For an MTK-owned installation,
+update or restore through MTK instead.
 
 The installer creates `.sfp27-standalone.lock` before changing aircraft files.
 `owner.json` records the host, PID and unique token. A normal release removes

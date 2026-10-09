@@ -1,23 +1,23 @@
 {
   "schemaVersion": 1,
   "packageId": "wahltho.zibo-levelup-737ng.27k-sfp",
-  "packageVersion": "0.1.0-beta.1",
+  "packageVersion": "0.1.0-beta.2",
   "files": {
     "z_Install.py": {
-      "size": 36441,
-      "sha256": "538282d06c2651a488cbad29c5b2ac3b8a4bed82f44badd775860fce9dfd1c3b"
+      "size": 36431,
+      "sha256": "d95ada88eb8b4c904f07ef33c31715cd50cfdb3fd1ec4b8fa84af91ba956c354"
     },
     "patchlib.py": {
       "size": 3700,
       "sha256": "668409afeae2791f085356d48783de8488887c6a64815637ef73f693d57f1557"
     },
     "package-manifest.json": {
-      "size": 15763,
-      "sha256": "2b6cfdbeccc9318ec7620e23331fdd117abc55d1073cc82e508b1a9c7f3844c7"
+      "size": 15930,
+      "sha256": "b9be762f8e407ae58ed4411374165234b6899412078661189ecccb3e6d6ebaaf"
     },
     "PREPARATION_STATUS.json": {
-      "size": 3570,
-      "sha256": "076f5ba3e3630d8aaf302b5f8d930388fb47021417d2af76d438a73e240ed047"
+      "size": 4396,
+      "sha256": "0f849394c7cb07fe92416a94061103c0e0056337140bc1fb1392fba67b748d7b"
     },
     "mtk-ownership-policy.json": {
       "size": 6933,
@@ -32,132 +32,124 @@
       "sha256": "0e4129d2ae0b352e8cbbe9323010536434cf3cd482b3c47a1e66844725286fa2"
     },
     "payload/B738.sfp27_fms.lua": {
-      "size": 6825,
-      "sha256": "9ddd6f32e802d0e2735dce6e64c241fb3fbbac631996b47c640de7a19927c841"
+      "size": 8399,
+      "sha256": "6576b59d9ef684338644dda0718203c12b5ce9d997747924c4ab0975a6d2a74d"
     },
     "payload/B738.sfp27_calc.lua": {
-      "size": 4063,
-      "sha256": "1ab946b94b142f62c4d3d7148b79be175c3e6424f41b0564b93759a753b56098"
+      "size": 4607,
+      "sha256": "c3864f7fb3b05379fbe2f1f6941a1b7c9bd51b81633eb96b6420d6f4d5ac9108"
     },
     "payload/B738.sfp27_tablet.lua": {
       "size": 2932,
       "sha256": "e0208924845599f198e767fcf2c6d6a4e12e05f6f20815d9529260ac8e905e92"
     },
     "patches/FMS_LOAD.json": {
-      "size": 334,
-      "sha256": "f653edd253e39a79b8208ae2b994a8baa68bb1a5393c8d790c75087a877fbf1a"
+      "size": 493,
+      "sha256": "f421f33a2068f1ea3e00c7a378144311f68a197f7efa9da1741eeebb439c8387"
     },
     "patches/CALC_LOAD.json": {
-      "size": 338,
-      "sha256": "a429efa5af09ba8137faf5c34efd458396cb566fedf9dac018ee99d2a3a39560"
+      "size": 500,
+      "sha256": "4c5cecdbd4a7bb4141f780d90b9ad1120eaac0bf359e1fc340f3a37bb0fec020"
     },
     "patches/TABLET_LOAD.json": {
-      "size": 346,
-      "sha256": "8d4ad415bc55556af34e91883394befff81bb134b7755469f1d9decb3376649e"
+      "size": 514,
+      "sha256": "20fa3d6c6e3ac80f506e3bbff269c2fb5210c9a4cf1cd344b683c7eedaaee954"
     },
     "patches/UPSTREAM_RELEASE.json": {
-      "size": 389,
-      "sha256": "191ab79671ae13899ff7d618e3255c33a3b6c2a5194a2ca5629780a0e158234c"
+      "size": 580,
+      "sha256": "a63c2bff96728e8d2af70cd8c5c9b2ff86e59e1e247f03f92c5a8cadc5209238"
     },
     "patches/FMS_CALC_SYNC.json": {
-      "size": 355,
-      "sha256": "2f6971ca43d4df711679879929b5b4d5d71ff0e07a0cd118b97bfc97e4a02dcd"
+      "size": 519,
+      "sha256": "88168dbe8c11eec01bfe8df7b84efe6a4c58ebcba05aa32f3ba39d93f0b10c1e"
     },
     "patches/FMS_N1_SYNC.json": {
-      "size": 359,
-      "sha256": "1afacf1596e1fc47466216a9078586f0bcb35d61964f2d6fd767361a08163d43"
+      "size": 519,
+      "sha256": "aa2a30b93b17107e9867bb8ded927f6b86a351825200d7fad4c85b3475329efa"
     },
     "patches/FMS_TAKEOFF_PAGE.json": {
-      "size": 371,
-      "sha256": "ebad5749753255e9beb541916b2ff6bdea6b20b0a24fdc064d4ae1837342d202"
+      "size": 541,
+      "sha256": "fb1d123ec0e94748a8d2a54fc90c3e554c69b9067fdd713cc7aa80f5d533b526"
     },
     "patches/FMS_N1_PAGE.json": {
-      "size": 357,
-      "sha256": "45eeb1b58083998a068dc2661e2e8f56094b96dd1f3786d97f0a2e01db725e67"
+      "size": 517,
+      "sha256": "7121f7159ec1ba751e5404bca6069db29f9772e890eb42254e0165e637d45181"
     },
     "patches/FMS_DEFAULT_LABELS.json": {
-      "size": 396,
-      "sha256": "e6a12dce00192ba0a548252f5d8bb677270fe90381c8645d00025bf3f4dd9871"
+      "size": 572,
+      "sha256": "13e800c087f1a54b4eba363cc266d6a39da834390edcf1953acad7c89ba1546d"
     },
     "patches/FMS_CONFIG_LABELS.json": {
-      "size": 393,
-      "sha256": "933da1fc11d2a0b3101ca3487390805cea01e3e602e610ba135c80f6d6a06ca8"
+      "size": 565,
+      "sha256": "83bc7debaf07d60c8dbbd57f736ea1ed3afc4012507201e71743b3469656d7b0"
     },
     "patches/FMS_SFP_LABELS.json": {
-      "size": 383,
-      "sha256": "4aced1ef491269470579249e18143e9277eae077d1c05258a024c7a03a35b8fb"
+      "size": 551,
+      "sha256": "a750dd555eef2954890b41beed598bf316c1415ef993382655c985f7c45d6bf8"
     },
     "patches/FMS_FLIGHT_RESET.json": {
-      "size": 424,
-      "sha256": "357ee7523717226b2ad07b8edf18d33daa2b43bd086bccb59deb06c39db514db"
+      "size": 595,
+      "sha256": "1e967269acaf456831508b72852c994c237f01b21a75258d0355633543dd6db4"
     },
     "patches/CALC_FLIGHT_RESET.json": {
-      "size": 373,
-      "sha256": "5c785b681a10e4f63e6d60398ccfbe919660dbd9a31bbaffcaa75cb4d11d5a40"
+      "size": 547,
+      "sha256": "0236209a9fb464f3adf0ac4e8473ce35a97c96d59d3137cb78f23b3f6a9c8dd0"
     },
     "patches/CALC_N1.json": {
-      "size": 453,
-      "sha256": "593e2b97a05cd02b4fbaf8695749cd78171832d6556a84b685f22e30f4629e63"
+      "size": 696,
+      "sha256": "b36d2a442f5df956652b8d78e5890350b232222241216c8a06baa59aa88d40ba"
     },
     "patches/CALC_SPEEDS.json": {
-      "size": 444,
-      "sha256": "24bf610b0d18a78e1a9f60a6f0f0045f45361ca16baf09d869f162e8cd62b624"
+      "size": 698,
+      "sha256": "1bf4be0afb648f688690be443f8598383b3d085f4d939ef899bb642935354ef1"
     },
     "patches/CALC_TRIM.json": {
-      "size": 434,
-      "sha256": "b759d34bfd65745140ab4c80ef7422ed19e9a49b2509c619e3cfd9280a908c28"
+      "size": 682,
+      "sha256": "e5724d1f33ce31362dcdae763889c70f302d9e25f2f3a8694461ed573aee113f"
     },
     "patches/CALC_FULL_TAKEOFF.json": {
-      "size": 598,
-      "sha256": "0cbbf8b05abeecf203a2b99b578609a82b47e0fc7fa1f85805a254b128253f3c"
+      "size": 916,
+      "sha256": "e556f9d0455370e628f1e8ae2ba8c4f97c7b3115f807991dc879b00c814cf506"
     },
     "patches/CALC_GA_ALIAS.json": {
-      "size": 699,
-      "sha256": "2ed06154a77dd38620ab5c748c440ace4955d5f1290b07db94ef779ad28a2ded"
+      "size": 1436,
+      "sha256": "5af2660d287733339f7704e98bec134733b3ba80be95034b9b5b06e31f7e191c"
     },
     "patches/FMS_MANUAL_V1_CDU1.json": {
-      "size": 386,
-      "sha256": "9e7e52f3ce532a56287a6ac109affda7e487d5cec2de18ea380fbbb39c752b05"
+      "size": 568,
+      "sha256": "3ca5234c4dd9ca819e6703ceceecb2ae04d7b6cdea2040f2396243cd74f487da"
     },
     "patches/FMS_MANUAL_VR_CDU1.json": {
-      "size": 386,
-      "sha256": "d62797470f1d31b82d70cf2f8b3d1c79de5f9bc9a2ab1436d52df7fd5a181673"
+      "size": 568,
+      "sha256": "b97096caef39c30cb1f2e39953f6b3b45bb4b6899e90e29e927696d2314d050a"
     },
     "patches/FMS_MANUAL_V2_CDU1.json": {
-      "size": 386,
-      "sha256": "f15bb93469cca15c50db5e75b4059d5247e37b7fe5b85c1557fcd8724d3d61ec"
+      "size": 568,
+      "sha256": "d5a485610139585edb3c423ec41ba9f30896dc37747143d83f378d7d14ef67a2"
     },
     "patches/FMS_MANUAL_V1_CDU2.json": {
-      "size": 387,
-      "sha256": "0ead2f56b10bb5795e25f2c79182add3de9400b550cc7a12ffd6ee4a6298821d"
+      "size": 569,
+      "sha256": "f529376e5e012a49f612e94dc2ec82f81c93ca39d0882f36778142e77871052c"
     },
     "patches/FMS_MANUAL_VR_CDU2.json": {
-      "size": 387,
-      "sha256": "c07f837b99a7c04efb843900caee3947984e019b23d3c140468a47861989a654"
+      "size": 569,
+      "sha256": "b21e61c0529016e1371ab3edd44857ef3df9feb55a8698c5f22c1f65e20bb78d"
     },
     "patches/FMS_MANUAL_V2_CDU2.json": {
-      "size": 387,
-      "sha256": "8992fe4dfdbfa19798048f1651cbc5c85e44feddc3f520c14a6845d3339d75c3"
+      "size": 569,
+      "sha256": "0d5d41bef7e001a3f62a2f6e8e54642f85f52c28bb7c9c174930ac9d8fc7618a"
     },
     "patches/FMS_UPLINK_SPEEDS.json": {
-      "size": 469,
-      "sha256": "4e98210c7be207eada745569db5ec22796ed3bfe1c7f6716b33ccb4fd9e0fbef"
+      "size": 735,
+      "sha256": "a8a180e9ea5812c1928902514fe2243ebcc7738c2e39f46520c8d939ec8ff7c2"
     },
     "patches/FMS_AUTO_SPEEDS.json": {
-      "size": 5469,
-      "sha256": "b49ece3dddacdfe74010b13e026a29e420200caa8915fbbdf8fdec8edef86aa6"
+      "size": 9039,
+      "sha256": "b236ad486e69140e115c77fe8ae371289d0bc20faaa80b1a34f1056f18f4d518"
     },
     "patches/TABLET_GUARD.json": {
-      "size": 361,
-      "sha256": "b17909dd6e214c67d8105e1f4698cd2c64ebedbb803c42144be59d45ffb64c56"
-    },
-    "standalone_guard.py": {
-      "size": 32872,
-      "sha256": "53aafbe3b0fcef26d732352cc3ec054a4dffe6114a4296440ce8bde8c0c2f294"
-    },
-    "standalone-ownership.json": {
-      "size": 7302,
-      "sha256": "5e3bae64689da7c3d8ad350e8be4acf39dad0cf4bb76e5359f7e173507d748a7"
+      "size": 528,
+      "sha256": "f4ea9ac2954095b7e003a160628ef11a84c2c5c718487364a38b81d9800035ea"
     }
   }
 }

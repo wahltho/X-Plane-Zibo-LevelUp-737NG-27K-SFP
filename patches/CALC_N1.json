@@ -8,10 +8,19 @@
   ],
   "position": "after",
   "contentLines": [
-    "-- package-version|0.1.0-beta.1",
+    "-- package-version|0.1.0-beta.2",
     "    if B738_sfp27_calc.active() then",
     "        return B738_sfp27_calc.n1(alt_entry, in_mode)",
     "    end"
   ],
-  "legacyBlocks": []
+  "legacyBlocks": [
+    [
+      "-- BEGIN SFP27 CALC_N1",
+      "-- package-version|0.1.0-beta.1",
+      "    if B738_sfp27_calc.active() then",
+      "        return B738_sfp27_calc.n1(alt_entry, in_mode)",
+      "    end",
+      "-- END SFP27 CALC_N1"
+    ]
+  ]
 }

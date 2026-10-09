@@ -1,3 +1,26 @@
+# v0.1.0-beta.2
+
+9 October 2026: fixes a ground lifecycle defect in the 27K patch. Ordinary
+pressure-altitude, automatic ambient-temperature and gross-weight changes no
+longer erase confirmed V-speeds or publish temporary zero N1 targets. A fresh
+changed speed candidate requests the original VERIFY TAKEOFF SPEEDS display.
+Explicit configuration changes and genuinely unavailable calculations remain
+guarded. N1, fixed ceilings, speeds and trim share a captured producer input
+and its matching key. The performance tables and interpolation are unchanged.
+
+The tester's A/T report is consistent with an unavailable-N1 transition, but
+the exact simulator event is not yet traced. The original heated TAT-probe
+indication is unchanged; its ground temperature rise is a separate owner.
+No original/modified aircraft script, ACF, plugin, manual or private C++ is
+distributed. This remains a Beta and does not claim simulator validation.
+
+MTK users update through their existing owner. Standalone beta.1 users must
+uninstall with their retained beta.1 installer, retain its verified state and
+backups outside the aircraft, then install beta.2. See README.md.
+
+Current review/dry-test status: pending separate test approval and execution;
+no earlier beta.1 PASS is transferred to this runtime correction.
+
 # v0.1.0-beta.1
 
 MTK catalog integration refresh — 8 October 2026: the FMS reset hook now uses

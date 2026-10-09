@@ -8,8 +8,15 @@
   ],
   "position": "after",
   "contentLines": [
-    "-- package-version|0.1.0-beta.1",
+    "-- package-version|0.1.0-beta.2",
     "dofile(\"B738.sfp27_fms.lua\")"
   ],
-  "legacyBlocks": []
+  "legacyBlocks": [
+    [
+      "-- BEGIN SFP27 FMS_LOAD",
+      "-- package-version|0.1.0-beta.1",
+      "dofile(\"B738.sfp27_fms.lua\")",
+      "-- END SFP27 FMS_LOAD"
+    ]
+  ]
 }
