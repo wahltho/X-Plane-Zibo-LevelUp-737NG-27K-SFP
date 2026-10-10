@@ -8,10 +8,16 @@
   ],
   "position": "after",
   "contentLines": [
-    "-- package-version|0.1.0-beta.2",
+    "-- package-version|0.1.0-beta.3",
     "    B738_sfp27_calc.reset()"
   ],
   "legacyBlocks": [
+    [
+      "-- BEGIN SFP27 CALC_FLIGHT_RESET",
+      "-- package-version|0.1.0-beta.2",
+      "    B738_sfp27_calc.reset()",
+      "-- END SFP27 CALC_FLIGHT_RESET"
+    ],
     [
       "-- BEGIN SFP27 CALC_FLIGHT_RESET",
       "-- package-version|0.1.0-beta.1",

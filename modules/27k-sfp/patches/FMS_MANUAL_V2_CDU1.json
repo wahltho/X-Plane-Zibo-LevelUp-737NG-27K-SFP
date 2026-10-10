@@ -8,10 +8,16 @@
   ],
   "position": "after",
   "contentLines": [
-    "-- package-version|0.1.0-beta.2",
+    "-- package-version|0.1.0-beta.3",
     "    B738_sfp27_fms.manual(\"v2\")"
   ],
   "legacyBlocks": [
+    [
+      "-- BEGIN SFP27 FMS_MANUAL_V2_CDU1",
+      "-- package-version|0.1.0-beta.2",
+      "    B738_sfp27_fms.manual(\"v2\")",
+      "-- END SFP27 FMS_MANUAL_V2_CDU1"
+    ],
     [
       "-- BEGIN SFP27 FMS_MANUAL_V2_CDU1",
       "-- package-version|0.1.0-beta.1",

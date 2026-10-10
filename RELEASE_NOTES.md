@@ -1,3 +1,28 @@
+# v0.1.0-beta.3
+
+10 October 2026: packs, engine bleed switches and isolation-valve changes no
+longer retire confirmed automatic takeoff speeds merely because their state
+changes. They remain part of the calculation identity, so the matching N1 pack
+correction is recalculated. Changed speed candidates retain VERIFY TAKEOFF
+SPEEDS; genuinely unavailable results and actual FMC performance edits retain
+their validation. No N1 reset or A/T workaround is introduced.
+
+The tester reports that beta.2 resolved the A/T disconnections. This is user
+flight evidence, not full simulator validation. The remaining APPROACH REF
+report concerns existing landing VREF owners, which this takeoff patch does
+not replace. No VREF or performance-table change is included in this release.
+
+The common MTK metadata recognizes exact beta.1 and beta.2 hooks/payloads.
+Standalone updates require uninstall with the matching old installer and
+retention of verified backups outside the aircraft. Ownership protection is
+unchanged. Standalone package integrity now also covers the ownership guard
+and its contract. Independent source review is green. Current disposable dry
+checks passed 97 Python methods (62 standalone, 5 earlier-beta upgrades,
+15 export and 15 Lua) and 45 released-Core MTK cases using MTK 0.28.2 and
+catalog 1.19.0. The 56-row pneumatic regression executes the original .35
+ground/N1 producers and confirms the published beta.2 negative control.
+No beta.3 simulator, real-thrust calibration or landing-VREF validation is claimed.
+
 # v0.1.0-beta.2
 
 9 October 2026: fixes a ground lifecycle defect in the 27K patch. Ordinary

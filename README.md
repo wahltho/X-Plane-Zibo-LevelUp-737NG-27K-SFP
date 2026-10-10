@@ -1,6 +1,10 @@
 # Zibo / LevelUp 737-800WSFP2 27K patch
 
-**0.1.0-beta.2 — ground V-speed/N1 lifecycle fix; simulator validation remains open.**
+**0.1.0-beta.3 — pneumatic V-speed fix. Beta; simulator validation remains open.**
+
+Independent source review and disposable-fixture dry checks cover this release:
+97 Python test methods and 45 released-Core MTK cases passed. The pneumatic
+regression also exercises the original .35 N1 producers in 56 combinations.
 
 This patch implements **737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2**, with
 FAA Category C/N brakes, for upstream Zibo 4.05.35 Lua and the corresponding
@@ -9,7 +13,7 @@ LevelUp passenger 737-800. It includes the runtime performance tables for full
 unchanged. No private C++ plugin is required.
 
 Public repository: [X-Plane-Zibo-LevelUp-737NG-27K-SFP](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP).
-Download the [v0.1.0-beta.2 package](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP/releases/tag/v0.1.0-beta.2).
+Release package: [v0.1.0-beta.3](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP/releases/tag/v0.1.0-beta.3).
 See [release notes](RELEASE_NOTES.md) for scope and validation.
 
 ## Changes existing Zibo SFP calculations
@@ -41,7 +45,7 @@ patch does not claim universal SFP1/SFP2/SFP3 applicability.
 - Suppression of unsupported Tablet takeoff-distance and optimized ATM/MTOW
   results, including stale results from an earlier calculation.
 - Background pressure-altitude, automatic ambient-temperature and fuel-weight
-  updates preserve confirmed speeds and valid N1 targets. Changed speed
+  and pneumatic-load updates preserve confirmed speeds and valid N1 targets. Changed speed
   candidates use the existing VERIFY TAKEOFF SPEEDS display; explicit
   configuration edits and genuinely unavailable results retain validation.
 
@@ -64,9 +68,9 @@ operations on three existing Lua scripts. Complete original aircraft scripts
 are not distributed. `package-manifest.json` uses supported MTK schema 3
 operations, module `27k-sfp`, optional and disabled by default, order 68.
 It uses `migrate-marked-block-v1`, `exact-text-replacements-v1` and `copy-file-v1`.
-The ownership policy is registered in catalog schema 2. Catalog 1.18.0 adds
-the selectable Beta module to both Zibo and LevelUp patch groups.
-Use MTK 0.28.0 or newer with that catalog or a later version. The patch remains
+The ownership policy is registered in catalog schema 2. The current catalog
+1.19.0 includes the selectable Beta module in both Zibo and LevelUp patch groups.
+Use MTK 0.28.2 or newer with that catalog or a later compatible version. The patch remains
 optional and is not selected automatically.
 
 ### Install through MTK
@@ -82,17 +86,17 @@ the required LevelUp maintenance patches. A standalone installation must first
 be removed through its own installer; matching file hashes alone do not prove
 ownership or a complete restore chain.
 
-### Updating beta.1
+### Updating an earlier beta
 
 For an MTK-owned installation, update the existing patch selection through MTK
 and keep its other modules selected. The catalog reads this patch's latest
 release; no manual copy of aircraft scripts is needed.
 
-For a standalone beta.1 installation, close X-Plane and uninstall using the
-retained **beta.1** installer first. Confirm successful removal, then retain
+For a standalone beta.1 or beta.2 installation, close X-Plane and uninstall using the
+retained installer for that **installed version** first. Confirm successful removal, then retain
 the complete verified `.sfp27-standalone` state/backups outside the aircraft.
-Install beta.2 from its extracted ZIP. The beta.2 installer deliberately refuses
-a beta.1 receipt; it does not adopt another version's original-backup chain.
+Install beta.3 from its extracted ZIP. Its installer deliberately refuses
+another version's receipt; it does not adopt another version's original-backup chain.
 Do not delete backups, manually remove hooks, or combine installation owners.
 
 ### Standalone install and uninstall
@@ -148,12 +152,12 @@ adopt an already patched file as the original merely because its bytes match.
 catalog-schema-2 policy fragment for standalone evidence, seven payload paths
 and the complete reserved SFP27 marker namespace on all three scripts. It must
 be registered in the MTK catalog; the package manifest does not auto-register
-it. For beta.1, the registered policy and actual released Core passed 30 installer cases,
-including genuine ownership refusal in both directions, unknown markers,
-receiptless state and locks, complete restore and VREF/Tablet combinations.
-Use MTK 0.28.0 or newer with the corrected current catalog. MTK 0.28.1 obtains
-the catalog online and keeps a verified cache; it has no embedded offline
-catalog. The catalog must contain the full `.sfp27-standalone` directory and
+it. For beta.3, the registered policy and released MTK 0.28.2 Core passed
+45 cases with catalog 1.19.0, including exact beta.1/beta.2 upgrades,
+ownership refusal in both directions, unknown markers, receiptless state and
+locks, complete restore and required LevelUp W&B/VREF/Tablet combinations.
+Use MTK 0.28.2 or newer with the current compatible catalog. MTK obtains
+the catalog online and keeps a verified cache. The catalog must contain the full `.sfp27-standalone` directory and
 lock evidence rules. Package metadata alone does not register those rules.
 
 ## Performance and validation boundaries
@@ -172,9 +176,11 @@ Linux plugin's N1-to-force interface, but does not prove calibrated installed
 Unavailable N1 retains original MAN/unavailable handling; a plugin fallback
 is not a calculated value from this profile.
 
-The previous beta passed independent review and disposable-fixture dry tests.
-Validation of the lifecycle correction is recorded separately below and in
-the status file; earlier PASS results do not validate changed runtime code.
+Beta.3 passed independent source review and current disposable-fixture dry
+tests: 62 standalone, 5 earlier-beta upgrade, 15 export and 15 Lua methods,
+plus 45 cases through the actual released MTK Core. The pneumatic matrix
+covers both aircraft variants, both callback orders and per-engine N1 loading;
+the published beta.2 payload reproduces the speed-clearing regression.
 These checks do not constitute simulator or actual-thrust validation.
 Current status and activation limits are recorded in
 [PREPARATION_STATUS.json](PREPARATION_STATUS.json).

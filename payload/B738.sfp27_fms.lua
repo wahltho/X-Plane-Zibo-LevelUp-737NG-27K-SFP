@@ -89,19 +89,22 @@ function fms.sync()
     if SFP27DR_active == 1 then validate_atm() end
     local key, configuration = "OFF", "OFF"
     if SFP27DR_active == 1 then
-        -- Explicit configuration sources are separate from live GW/PA/TAT.
-        -- Fuel burn and sensor updates request a fresh calculation, without
+        -- FMC performance edits retire automatic speed acceptance. Live
+        -- GW/PA/TAT and pneumatic loads request a fresh calculation without
         -- revoking pilot-confirmed speeds or publishing an unavailable N1.
         configuration = table.concat({tostring(B738DR_b737_variant), tostring(B738DR_73x),
             tostring(to), tostring(to_1), tostring(to_2), source_value(sel_temp), source_value(oat),
             source_value(zfw_lbs), source_value(flaps), source_value(cg), tostring(rw_cond),
             tostring(ref_rwy), source_value(rw_wind_dir), source_value(rw_wind_spd),
             source_value(rw_slope), source_value(rw_hdg),
-            tostring(SFP27DR_bleed1), tostring(SFP27DR_bleed2), tostring(SFP27DR_pack1),
-            tostring(SFP27DR_pack2), tostring(SFP27DR_isolation),
             tostring(B738DR_aspirated_probe), tostring(ref_icao)}, "|")
         -- Raw FMC sources, before B738_calc republishes them as DataRefs.
-        key = table.concat({configuration, source_value(gw_lbs),
+        -- All pneumatic sources remain in the calculation identity: pack
+        -- loading changes N1, but is not a V-speed table input. Fresh numeric
+        -- candidates below still require VERIFY if a speed actually changes.
+        key = table.concat({configuration,
+            tostring(SFP27DR_bleed1), tostring(SFP27DR_bleed2), tostring(SFP27DR_pack1),
+            tostring(SFP27DR_pack2), tostring(SFP27DR_isolation), source_value(gw_lbs),
             string.format("%.0f", SFP27DR_altitude),
             B738DR_aspirated_probe ~= 0 and oat == "****" and string.format("%.1f", simDR_TAT) or "manual",
             }, "|")

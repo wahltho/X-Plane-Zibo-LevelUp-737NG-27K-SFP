@@ -2,7 +2,7 @@
   "schemaVersion": 3,
   "packageType": "compatibilityPackage",
   "packageId": "wahltho.zibo-levelup-737ng.27k-sfp",
-  "packageVersion": "0.1.0-beta.2",
+  "packageVersion": "0.1.0-beta.3",
   "repositoryUrl": "https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP",
   "aircraftFamily": "Zibo / LevelUp passenger 737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2 for X-Plane 12",
   "supportedProducts": [
@@ -14,7 +14,7 @@
     {
       "moduleId": "27k-sfp",
       "displayName": "737-800WSFP2 27K (Beta)",
-      "description": "737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2: 27K / 26K / 24K. Corrects ground V-speed/N1 refresh; changes existing Zibo SFP calculations. Optional Beta; simulator validation and certified dispatch performance remain open.",
+      "description": "737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2: 27K / 26K / 24K. Preserves confirmed V-speeds during pneumatic/N1 refresh; changes existing Zibo SFP calculations. Optional Beta; simulator validation and certified dispatch performance remain open.",
       "policy": "optional",
       "defaultEnabled": false,
       "installationOrder": 68,
@@ -33,8 +33,8 @@
         },
         {
           "path": "payload/B738.sfp27_fms.lua",
-          "size": 8399,
-          "sha256": "6576b59d9ef684338644dda0718203c12b5ce9d997747924c4ab0975a6d2a74d"
+          "size": 8627,
+          "sha256": "804c061d3c1cddc2e24084b70839f910e725e8711b03358ce0152b4ea25714fd"
         },
         {
           "path": "payload/B738.sfp27_calc.lua",
@@ -48,138 +48,138 @@
         },
         {
           "path": "patches/FMS_LOAD.json",
-          "size": 493,
-          "sha256": "f421f33a2068f1ea3e00c7a378144311f68a197f7efa9da1741eeebb439c8387"
+          "size": 650,
+          "sha256": "2219e746b5a47c90dc646b946e123b7af6c30a901ebb975925c7ee37e5fa853d"
         },
         {
           "path": "patches/CALC_LOAD.json",
-          "size": 500,
-          "sha256": "4c5cecdbd4a7bb4141f780d90b9ad1120eaac0bf359e1fc340f3a37bb0fec020"
+          "size": 660,
+          "sha256": "8c85e9adcd58a0425d3399f194bc8abeb449e15b45abe50817a8e9c0a210466b"
         },
         {
           "path": "patches/TABLET_LOAD.json",
-          "size": 514,
-          "sha256": "20fa3d6c6e3ac80f506e3bbff269c2fb5210c9a4cf1cd344b683c7eedaaee954"
+          "size": 680,
+          "sha256": "6baa8133ff21b3f69d1153331a1a2ef66fac4064979a9b31d7eab57bf71ad3ce"
         },
         {
           "path": "patches/UPSTREAM_RELEASE.json",
-          "size": 580,
-          "sha256": "a63c2bff96728e8d2af70cd8c5c9b2ff86e59e1e247f03f92c5a8cadc5209238"
+          "size": 769,
+          "sha256": "966821c61dea3e90dd741f160b95c362c06fa4adedba1e27098fdf825c50f1c4"
         },
         {
           "path": "patches/FMS_CALC_SYNC.json",
-          "size": 519,
-          "sha256": "88168dbe8c11eec01bfe8df7b84efe6a4c58ebcba05aa32f3ba39d93f0b10c1e"
+          "size": 681,
+          "sha256": "2d530ea894fd1a4e56b29e99973025c6b7bdc67b089c2d5abfeb6247356bb681"
         },
         {
           "path": "patches/FMS_N1_SYNC.json",
-          "size": 519,
-          "sha256": "aa2a30b93b17107e9867bb8ded927f6b86a351825200d7fad4c85b3475329efa"
+          "size": 677,
+          "sha256": "8796d5eb3e46aafa2e5d91fa0da017de886735f16f3e2ad839b0dadbb5b1c535"
         },
         {
           "path": "patches/FMS_TAKEOFF_PAGE.json",
-          "size": 541,
-          "sha256": "fb1d123ec0e94748a8d2a54fc90c3e554c69b9067fdd713cc7aa80f5d533b526"
+          "size": 709,
+          "sha256": "893376b4f9aee65300f9bb767b025d802f88a99d59db7de8e01b70ce622d6dbf"
         },
         {
           "path": "patches/FMS_N1_PAGE.json",
-          "size": 517,
-          "sha256": "7121f7159ec1ba751e5404bca6069db29f9772e890eb42254e0165e637d45181"
+          "size": 675,
+          "sha256": "2a51cfd7adc8efc9091be21f4405a26328866500e660f8b5cf4e4cdbc7c8c29b"
         },
         {
           "path": "patches/FMS_DEFAULT_LABELS.json",
-          "size": 572,
-          "sha256": "13e800c087f1a54b4eba363cc266d6a39da834390edcf1953acad7c89ba1546d"
+          "size": 746,
+          "sha256": "0a4e12e432a5f09b4200535f4c73ece6dc5e595d562699c35ae2fbea71931ca3"
         },
         {
           "path": "patches/FMS_CONFIG_LABELS.json",
-          "size": 565,
-          "sha256": "83bc7debaf07d60c8dbbd57f736ea1ed3afc4012507201e71743b3469656d7b0"
+          "size": 735,
+          "sha256": "ca38c8f382f1a0938b8a86e92fe7a3ac4043a86109899e96d06b1cbd0706c287"
         },
         {
           "path": "patches/FMS_SFP_LABELS.json",
-          "size": 551,
-          "sha256": "a750dd555eef2954890b41beed598bf316c1415ef993382655c985f7c45d6bf8"
+          "size": 717,
+          "sha256": "48f4c6a226191c1b2837dd25b00cb7aca6bfc25450ba935d34470b99a9bd33e6"
         },
         {
           "path": "patches/FMS_FLIGHT_RESET.json",
-          "size": 595,
-          "sha256": "1e967269acaf456831508b72852c994c237f01b21a75258d0355633543dd6db4"
+          "size": 764,
+          "sha256": "56ba20bb28667a426db1d091aa60fc4810fe85de9ee9d88b8e353417c033c263"
         },
         {
           "path": "patches/CALC_FLIGHT_RESET.json",
-          "size": 547,
-          "sha256": "0236209a9fb464f3adf0ac4e8473ce35a97c96d59d3137cb78f23b3f6a9c8dd0"
+          "size": 719,
+          "sha256": "f387e5ef036423df2c7da6dbbcaa942a17f523bd16bf4f70cfcffd76b6ce3641"
         },
         {
           "path": "patches/CALC_N1.json",
-          "size": 696,
-          "sha256": "b36d2a442f5df956652b8d78e5890350b232222241216c8a06baa59aa88d40ba"
+          "size": 937,
+          "sha256": "3a74e009da1903342c491d223a12504b238fcba83a0296b6e5a0d5bc706bbb0f"
         },
         {
           "path": "patches/CALC_SPEEDS.json",
-          "size": 698,
-          "sha256": "1bf4be0afb648f688690be443f8598383b3d085f4d939ef899bb642935354ef1"
+          "size": 950,
+          "sha256": "86f3fdd46e174ebf5f97324c159423da7a0104dc8bc30c8220d34404b0a411c2"
         },
         {
           "path": "patches/CALC_TRIM.json",
-          "size": 682,
-          "sha256": "e5724d1f33ce31362dcdae763889c70f302d9e25f2f3a8694461ed573aee113f"
+          "size": 928,
+          "sha256": "71c4ecb4a7540c25c472cd21fe62635b3f3d83712f49713c714bdad543e8916f"
         },
         {
           "path": "patches/CALC_FULL_TAKEOFF.json",
-          "size": 916,
-          "sha256": "e556f9d0455370e628f1e8ae2ba8c4f97c7b3115f807991dc879b00c814cf506"
+          "size": 1232,
+          "sha256": "3bf0abfba2e6f16500b6462a6d72d31c0fee96d118ad7dcc47205f8ace6ffcb0"
         },
         {
           "path": "patches/CALC_GA_ALIAS.json",
-          "size": 1436,
-          "sha256": "5af2660d287733339f7704e98bec134733b3ba80be95034b9b5b06e31f7e191c"
+          "size": 1933,
+          "sha256": "55ae8f22b2e59861ad417a622e423a6ca80dc27b5a3f9e977cb8435713581cb4"
         },
         {
           "path": "patches/FMS_MANUAL_V1_CDU1.json",
-          "size": 568,
-          "sha256": "3ca5234c4dd9ca819e6703ceceecb2ae04d7b6cdea2040f2396243cd74f487da"
+          "size": 748,
+          "sha256": "8efe45b53645c9c2cce667a2386ca907d798f88057050be5567891a833a56666"
         },
         {
           "path": "patches/FMS_MANUAL_VR_CDU1.json",
-          "size": 568,
-          "sha256": "b97096caef39c30cb1f2e39953f6b3b45bb4b6899e90e29e927696d2314d050a"
+          "size": 748,
+          "sha256": "7594ab59001684b05c7bc5514168db488a20c6679b175f81c9fcac5798d396c1"
         },
         {
           "path": "patches/FMS_MANUAL_V2_CDU1.json",
-          "size": 568,
-          "sha256": "d5a485610139585edb3c423ec41ba9f30896dc37747143d83f378d7d14ef67a2"
+          "size": 748,
+          "sha256": "57238160385a177244d6236fc056ba98574cfb2354940b6cfa5185c8798744ee"
         },
         {
           "path": "patches/FMS_MANUAL_V1_CDU2.json",
-          "size": 569,
-          "sha256": "f529376e5e012a49f612e94dc2ec82f81c93ca39d0882f36778142e77871052c"
+          "size": 749,
+          "sha256": "ba95bc39a6511df7b91cf5b149573e4f8801ca2ccac5cbf1bbd06ddcbdae6fc7"
         },
         {
           "path": "patches/FMS_MANUAL_VR_CDU2.json",
-          "size": 569,
-          "sha256": "b21e61c0529016e1371ab3edd44857ef3df9feb55a8698c5f22c1f65e20bb78d"
+          "size": 749,
+          "sha256": "dd4a369e27325fbe369189d252e5636366ee1179cdec3571beb6c0410139f3bc"
         },
         {
           "path": "patches/FMS_MANUAL_V2_CDU2.json",
-          "size": 569,
-          "sha256": "0d5d41bef7e001a3f62a2f6e8e54642f85f52c28bb7c9c174930ac9d8fc7618a"
+          "size": 749,
+          "sha256": "b03f16f244ac0a0dedfc4dfec9c5d93c6be5ea7b4999b4bd8e8f4aa6c1586d28"
         },
         {
           "path": "patches/FMS_UPLINK_SPEEDS.json",
-          "size": 735,
-          "sha256": "a8a180e9ea5812c1928902514fe2243ebcc7738c2e39f46520c8d939ec8ff7c2"
+          "size": 999,
+          "sha256": "8734bf14abff4759aafacdb8274899cb7ab298b17266e5e60567664cb269bb33"
         },
         {
           "path": "patches/FMS_AUTO_SPEEDS.json",
-          "size": 9039,
-          "sha256": "b236ad486e69140e115c77fe8ae371289d0bc20faaa80b1a34f1056f18f4d518"
+          "size": 12405,
+          "sha256": "194c8e22f694e84d55e88c158b986e9a6a64cfb32277aa1dcc5df2bb032eeb36"
         },
         {
           "path": "patches/TABLET_GUARD.json",
-          "size": 528,
-          "sha256": "f4ea9ac2954095b7e003a160628ef11a84c2c5c718487364a38b81d9800035ea"
+          "size": 693,
+          "sha256": "27404f1975d0af05d3e5d86a205a1c2a64751ada544ba4d64ffe9729b5852a3f"
         }
       ],
       "targets": [
@@ -224,10 +224,11 @@
           "payload": "payload/B738.sfp27_fms.lua",
           "relativePath": "plugins/xlua/scripts/B738.a_fms/B738.sfp27_fms.lua",
           "sourceSha256": [
+            "804c061d3c1cddc2e24084b70839f910e725e8711b03358ce0152b4ea25714fd",
             "6576b59d9ef684338644dda0718203c12b5ce9d997747924c4ab0975a6d2a74d",
             "9ddd6f32e802d0e2735dce6e64c241fb3fbbac631996b47c640de7a19927c841"
           ],
-          "resultSha256": "6576b59d9ef684338644dda0718203c12b5ce9d997747924c4ab0975a6d2a74d"
+          "resultSha256": "804c061d3c1cddc2e24084b70839f910e725e8711b03358ce0152b4ea25714fd"
         },
         {
           "operation": "copy-file-v1",
