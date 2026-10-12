@@ -1,10 +1,12 @@
 # Zibo / LevelUp 737-800WSFP2 27K patch
 
-**0.1.0-beta.3 — pneumatic V-speed fix. Beta; simulator validation remains open.**
+**0.1.0-beta.4 — SFP2 landing VREF15/30/40; public Beta.**
 
-Independent source review and disposable-fixture dry checks cover this release:
-97 Python test methods and 45 released-Core MTK cases passed. The pneumatic
-regression also exercises the original .35 N1 producers in 56 combinations.
+This version adds the matched SFP2 landing VREF15/30/40 family. Independent
+source review and current dry tests passed: 104 Python methods and 54 released
+MTK Core cases. Published MTK catalog 1.20.0 registers all new landing markers
+and matches the tested expanded policy. Installation is enabled for standalone
+and MTK. Simulator validation remains open.
 
 This patch implements **737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2**, with
 FAA Category C/N brakes, for upstream Zibo 4.05.35 Lua and the corresponding
@@ -13,7 +15,7 @@ LevelUp passenger 737-800. It includes the runtime performance tables for full
 unchanged. No private C++ plugin is required.
 
 Public repository: [X-Plane-Zibo-LevelUp-737NG-27K-SFP](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP).
-Release package: [v0.1.0-beta.3](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP/releases/tag/v0.1.0-beta.3).
+Current package: [v0.1.0-beta.4](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP/releases/tag/v0.1.0-beta.4).
 See [release notes](RELEASE_NOTES.md) for scope and validation.
 
 ## Changes existing Zibo SFP calculations
@@ -24,6 +26,9 @@ its selectable takeoff calculations still use the 26K/24K/22K families. This
 patch replaces that calculation with the matched 27K/26K/24K N1,
 assumed-temperature and takeoff-speed families. Expect different N1, V-speeds
 and trim results on an installation that already displayed a 27K option.
+Beta.4 also replaces standard -800 landing VREF candidates with the matched
+SFP2 values while this profile is active. Previously selected/manual approach
+speeds remain pilot-owned; reselect the reference to use a changed candidate.
 
 The existing SFP setting activates the profile on the supported aircraft;
 there is no additional engine-option switch. Installing the patch opts that
@@ -37,6 +42,11 @@ patch does not claim universal SFP1/SFP2/SFP3 applicability.
   with a separate matching N1 and ATM table family for each rating.
 - Dry/wet takeoff V1/VR/V2, pressure-altitude/temperature/wind/slope
   adjustments, V1(MCG) and stabilizer trim for flaps 1, 5, 10, 15 and 25.
+- Matched landing VREF15/30/40 for 40–85 tonnes, both FMC displays/selections
+  and Calc's VREF/maneuver-bug publications. Landing F15 is distinct from
+  the original plugin-facing F15 maneuver reference `VREF40 + 20`.
+- Landing values are independent of selected takeoff rating/assumed temperature.
+  With no valid in-domain approach weight, candidates are unavailable.
 - Consistent FMC labels and automatic-speed acceptance, the original SFP
   persistence, and a ground-latched fixed-rating ceiling. Removing assumed
   temperature retains a selected 26K/24K derate.
@@ -63,15 +73,16 @@ own performance family and does not establish compatibility with the -800.
 
 ## Standalone and MTK
 
-Both installation paths use the same seven payload copies and 27 structural
+Both installation paths use the same seven payload copies and 30 structural
 operations on three existing Lua scripts. Complete original aircraft scripts
 are not distributed. `package-manifest.json` uses supported MTK schema 3
 operations, module `27k-sfp`, optional and disabled by default, order 68.
 It uses `migrate-marked-block-v1`, `exact-text-replacements-v1` and `copy-file-v1`.
-The ownership policy is registered in catalog schema 2. The current catalog
-1.19.0 includes the selectable Beta module in both Zibo and LevelUp patch groups.
-Use MTK 0.28.2 or newer with that catalog or a later compatible version. The patch remains
-optional and is not selected automatically.
+Beta.4's complete ownership policy is registered in catalog schema 2;
+published catalog 1.20.0 includes all 35 marker pairs and the Beta module in
+both Zibo and LevelUp patch groups. Refresh MTK's online catalog before applying
+beta.4; no new MTK application release is required.
+The module remains optional and is not selected automatically.
 
 ### Install through MTK
 
@@ -86,16 +97,22 @@ the required LevelUp maintenance patches. A standalone installation must first
 be removed through its own installer; matching file hashes alone do not prove
 ownership or a complete restore chain.
 
+The landing extension is designed to work with or without the optional VREF
+module. In the active SFP2 profile it owns landing candidates after that module's
+standard -800 formatters; SFP off and other aircraft retain their existing
+owners. Current component tests cover both runtime hook orders; released-Core
+dry tests cover actual combined VREF/Tablet/27K application and restore.
+
 ### Updating an earlier beta
 
 For an MTK-owned installation, update the existing patch selection through MTK
 and keep its other modules selected. The catalog reads this patch's latest
 release; no manual copy of aircraft scripts is needed.
 
-For a standalone beta.1 or beta.2 installation, close X-Plane and uninstall using the
+For a standalone beta.1, beta.2 or beta.3 installation, close X-Plane and uninstall using the
 retained installer for that **installed version** first. Confirm successful removal, then retain
 the complete verified `.sfp27-standalone` state/backups outside the aircraft.
-Install beta.3 from its extracted ZIP. Its installer deliberately refuses
+Then install beta.4 from its extracted release ZIP. Its installer deliberately refuses
 another version's receipt; it does not adopt another version's original-backup chain.
 Do not delete backups, manually remove hooks, or combine installation owners.
 
@@ -159,6 +176,9 @@ locks, complete restore and required LevelUp W&B/VREF/Tablet combinations.
 Use MTK 0.28.2 or newer with the current compatible catalog. MTK obtains
 the catalog online and keeps a verified cache. The catalog must contain the full `.sfp27-standalone` directory and
 lock evidence rules. Package metadata alone does not register those rules.
+Catalog 1.20.0 registers the CALC_LANDING_VREF, CALC_LANDING_ENVELOPE and
+FMS_LANDING_VREF marker pairs required by beta.4. The published policy is
+semantically identical to the expanded-policy catalog used in its Core tests.
 
 ## Performance and validation boundaries
 
@@ -168,6 +188,9 @@ brake/tire limits and automatic optimum assumed temperature. This patch does
 not supply those functions. Contaminated/slippery runway performance and SFP
 hardware changes are outside v0.1. Existing climb, cruise, continuous and
 go-around producers are retained.
+The original native -800 stall/minimum-speed model and tailskid/aerodynamic
+geometry are retained. Correct landing references do not establish certified
+landing distances, braking, approach attitude or tail clearance.
 
 Interpolation and integer-speed rounding remain model conventions rather than
 a verified exact FMC convention. Static analysis supports the original .35
@@ -176,12 +199,16 @@ Linux plugin's N1-to-force interface, but does not prove calibrated installed
 Unavailable N1 retains original MAN/unavailable handling; a plugin fallback
 is not a calculated value from this profile.
 
-Beta.3 passed independent source review and current disposable-fixture dry
+Historical beta.3 passed independent source review and disposable-fixture dry
 tests: 62 standalone, 5 earlier-beta upgrade, 15 export and 15 Lua methods,
 plus 45 cases through the actual released MTK Core. The pneumatic matrix
 covers both aircraft variants, both callback orders and per-engine N1 loading;
 the published beta.2 payload reproduces the speed-clearing regression.
 These checks do not constitute simulator or actual-thrust validation.
+Beta.4 passed its own independent source review, 104 current Python methods
+and 54 released-Core MTK cases. These are disposable component/installation
+checks, including a test catalog with the expanded ownership policy. Published
+catalog 1.20.0 was separately verified to contain the same complete policy.
 Current status and activation limits are recorded in
 [PREPARATION_STATUS.json](PREPARATION_STATUS.json).
 

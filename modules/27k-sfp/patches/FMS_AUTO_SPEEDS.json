@@ -15,7 +15,7 @@
         "\t\t\tif entry == \"\" then",
         "\t\t\t\tif v1 ~= \"---\" and qrh == \"OFF\" and v1_set == \"---\" then",
         "-- BEGIN SFP27 FMS_AUTO_V1_CDU1",
-        "-- package-version|0.1.0-beta.3",
+        "-- package-version|0.1.0-beta.4",
         "                    if B738_sfp27_fms.accept_auto(\"v1\", v1) then",
         "\t\t\t\t\tv1_set = v1",
         "                    end",
@@ -25,6 +25,19 @@
         "\t\t\t\t\tentry = v1_set"
       ],
       "legacyNewLines": [
+        [
+          "\t\t\tif entry == \"\" then",
+          "\t\t\t\tif v1 ~= \"---\" and qrh == \"OFF\" and v1_set == \"---\" then",
+          "-- BEGIN SFP27 FMS_AUTO_V1_CDU1",
+          "-- package-version|0.1.0-beta.3",
+          "                    if B738_sfp27_fms.accept_auto(\"v1\", v1) then",
+          "\t\t\t\t\tv1_set = v1",
+          "                    end",
+          "-- END SFP27 FMS_AUTO_V1_CDU1",
+          "\t\t\t\t\tverify_to_spd = 0",
+          "\t\t\t\telseif v1_set ~= \"---\" then",
+          "\t\t\t\t\tentry = v1_set"
+        ],
         [
           "\t\t\tif entry == \"\" then",
           "\t\t\t\tif v1 ~= \"---\" and qrh == \"OFF\" and v1_set == \"---\" then",
@@ -67,7 +80,7 @@
         "\t\t\tif entry == \"\" then",
         "\t\t\t\tif vr ~= \"---\" and qrh == \"OFF\" and vr_set == \"---\" then",
         "-- BEGIN SFP27 FMS_AUTO_VR_CDU1",
-        "-- package-version|0.1.0-beta.3",
+        "-- package-version|0.1.0-beta.4",
         "                    if B738_sfp27_fms.accept_auto(\"vr\", vr) then",
         "\t\t\t\t\tvr_set = vr",
         "                    end",
@@ -77,6 +90,19 @@
         "\t\t\t\t\tentry = vr_set"
       ],
       "legacyNewLines": [
+        [
+          "\t\t\tif entry == \"\" then",
+          "\t\t\t\tif vr ~= \"---\" and qrh == \"OFF\" and vr_set == \"---\" then",
+          "-- BEGIN SFP27 FMS_AUTO_VR_CDU1",
+          "-- package-version|0.1.0-beta.3",
+          "                    if B738_sfp27_fms.accept_auto(\"vr\", vr) then",
+          "\t\t\t\t\tvr_set = vr",
+          "                    end",
+          "-- END SFP27 FMS_AUTO_VR_CDU1",
+          "\t\t\t\t\tverify_to_spd = 0",
+          "\t\t\t\telseif vr_set ~= \"---\" then",
+          "\t\t\t\t\tentry = vr_set"
+        ],
         [
           "\t\t\tif entry == \"\" then",
           "\t\t\t\tif vr ~= \"---\" and qrh == \"OFF\" and vr_set == \"---\" then",
@@ -119,7 +145,7 @@
         "\t\t\tif entry == \"\" then",
         "\t\t\t\tif v2 ~= \"---\" and qrh == \"OFF\" and v2_set == \"---\" then",
         "-- BEGIN SFP27 FMS_AUTO_V2_CDU1",
-        "-- package-version|0.1.0-beta.3",
+        "-- package-version|0.1.0-beta.4",
         "                    if B738_sfp27_fms.accept_auto(\"v2\", v2) then",
         "\t\t\t\t\tv2_set = v2",
         "                    end",
@@ -129,6 +155,19 @@
         "\t\t\t\t\tentry = v2_set"
       ],
       "legacyNewLines": [
+        [
+          "\t\t\tif entry == \"\" then",
+          "\t\t\t\tif v2 ~= \"---\" and qrh == \"OFF\" and v2_set == \"---\" then",
+          "-- BEGIN SFP27 FMS_AUTO_V2_CDU1",
+          "-- package-version|0.1.0-beta.3",
+          "                    if B738_sfp27_fms.accept_auto(\"v2\", v2) then",
+          "\t\t\t\t\tv2_set = v2",
+          "                    end",
+          "-- END SFP27 FMS_AUTO_V2_CDU1",
+          "\t\t\t\t\tverify_to_spd = 0",
+          "\t\t\t\telseif v2_set ~= \"---\" then",
+          "\t\t\t\t\tentry = v2_set"
+        ],
         [
           "\t\t\tif entry == \"\" then",
           "\t\t\t\tif v2 ~= \"---\" and qrh == \"OFF\" and v2_set == \"---\" then",
@@ -171,7 +210,7 @@
         "\t\t\tif entry2 == \"\" then",
         "\t\t\t\tif v1 ~= \"---\" and qrh == \"OFF\" and v1_set == \"---\" then",
         "-- BEGIN SFP27 FMS_AUTO_V1_CDU2",
-        "-- package-version|0.1.0-beta.3",
+        "-- package-version|0.1.0-beta.4",
         "                    if B738_sfp27_fms.accept_auto(\"v1\", v1) then",
         "\t\t\t\t\tv1_set = v1",
         "                    end",
@@ -181,6 +220,19 @@
         "\t\t\t\t\tentry2 = v1_set"
       ],
       "legacyNewLines": [
+        [
+          "\t\t\tif entry2 == \"\" then",
+          "\t\t\t\tif v1 ~= \"---\" and qrh == \"OFF\" and v1_set == \"---\" then",
+          "-- BEGIN SFP27 FMS_AUTO_V1_CDU2",
+          "-- package-version|0.1.0-beta.3",
+          "                    if B738_sfp27_fms.accept_auto(\"v1\", v1) then",
+          "\t\t\t\t\tv1_set = v1",
+          "                    end",
+          "-- END SFP27 FMS_AUTO_V1_CDU2",
+          "\t\t\t\t\tverify_to_spd = 0",
+          "\t\t\t\telseif v1_set ~= \"---\" then",
+          "\t\t\t\t\tentry2 = v1_set"
+        ],
         [
           "\t\t\tif entry2 == \"\" then",
           "\t\t\t\tif v1 ~= \"---\" and qrh == \"OFF\" and v1_set == \"---\" then",
@@ -223,7 +275,7 @@
         "\t\t\tif entry2 == \"\" then",
         "\t\t\t\tif vr ~= \"---\" and qrh == \"OFF\" and vr_set == \"---\" then",
         "-- BEGIN SFP27 FMS_AUTO_VR_CDU2",
-        "-- package-version|0.1.0-beta.3",
+        "-- package-version|0.1.0-beta.4",
         "                    if B738_sfp27_fms.accept_auto(\"vr\", vr) then",
         "\t\t\t\t\tvr_set = vr",
         "                    end",
@@ -233,6 +285,19 @@
         "\t\t\t\t\tentry2 = vr_set"
       ],
       "legacyNewLines": [
+        [
+          "\t\t\tif entry2 == \"\" then",
+          "\t\t\t\tif vr ~= \"---\" and qrh == \"OFF\" and vr_set == \"---\" then",
+          "-- BEGIN SFP27 FMS_AUTO_VR_CDU2",
+          "-- package-version|0.1.0-beta.3",
+          "                    if B738_sfp27_fms.accept_auto(\"vr\", vr) then",
+          "\t\t\t\t\tvr_set = vr",
+          "                    end",
+          "-- END SFP27 FMS_AUTO_VR_CDU2",
+          "\t\t\t\t\tverify_to_spd = 0",
+          "\t\t\t\telseif vr_set ~= \"---\" then",
+          "\t\t\t\t\tentry2 = vr_set"
+        ],
         [
           "\t\t\tif entry2 == \"\" then",
           "\t\t\t\tif vr ~= \"---\" and qrh == \"OFF\" and vr_set == \"---\" then",
@@ -275,7 +340,7 @@
         "\t\t\tif entry2 == \"\" then",
         "\t\t\t\tif v2 ~= \"---\" and qrh == \"OFF\" and v2_set == \"---\" then",
         "-- BEGIN SFP27 FMS_AUTO_V2_CDU2",
-        "-- package-version|0.1.0-beta.3",
+        "-- package-version|0.1.0-beta.4",
         "                    if B738_sfp27_fms.accept_auto(\"v2\", v2) then",
         "\t\t\t\t\tv2_set = v2",
         "                    end",
@@ -285,6 +350,19 @@
         "\t\t\t\t\tentry2 = v2_set"
       ],
       "legacyNewLines": [
+        [
+          "\t\t\tif entry2 == \"\" then",
+          "\t\t\t\tif v2 ~= \"---\" and qrh == \"OFF\" and v2_set == \"---\" then",
+          "-- BEGIN SFP27 FMS_AUTO_V2_CDU2",
+          "-- package-version|0.1.0-beta.3",
+          "                    if B738_sfp27_fms.accept_auto(\"v2\", v2) then",
+          "\t\t\t\t\tv2_set = v2",
+          "                    end",
+          "-- END SFP27 FMS_AUTO_V2_CDU2",
+          "\t\t\t\t\tverify_to_spd = 0",
+          "\t\t\t\telseif v2_set ~= \"---\" then",
+          "\t\t\t\t\tentry2 = v2_set"
+        ],
         [
           "\t\t\tif entry2 == \"\" then",
           "\t\t\t\tif v2 ~= \"---\" and qrh == \"OFF\" and v2_set == \"---\" then",

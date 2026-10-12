@@ -1,3 +1,43 @@
+# v0.1.0-beta.4
+
+12 October 2026: adds matched 737-800WSFP2 landing VREF15/30/40 for 40–85t
+to the existing bounded passenger -800 profile. Both FMCs display and select
+the landing references; Calc publishes matching F30/F40 and the original
+F40-based maneuver aliases/bugs. The plugin-facing F15 maneuver reference
+stays F40+20. The optional VREF module's standard -800 values do not take
+precedence while this profile is active. Previously selected/manual approach
+speeds retain their original ownership and require deliberate reselection.
+
+At 62.6t the profile uses landing F15/F30/F40 149/138/135kt with bounded
+linear interpolation and the original nearest-integer landing convention.
+Exact Boeing/FMC interpolation/rounding remains unverified. Out-of-domain or
+unavailable approach weight supplies no substituted landing candidates.
+Other models/SFP off, takeoff tables, N1 and the beta.3 pneumatic fix are retained.
+Native -800 stall/minimum-speed modeling, aerodynamics and tailskid geometry
+are unchanged; certified landing/dispatch distances and braking are not added.
+
+The same standalone/MTK package supports exact beta.1/.2/.3 hook migrations.
+Published MTK catalog 1.20.0 registers the three new landing marker pairs and
+preserves the complete ownership policy. Use MTK 0.28.2 or newer, refresh its
+online catalog, update through MTK and keep other installed patches selected.
+No new MTK application release is required. A standalone update requires
+uninstall with the retained matching old installer first, then installation
+from the beta.4 ZIP. Follow the README when switching installation owners.
+
+Independent beta.4 source review is GO. Current dry tests passed 104 Python
+methods (21 Lua/landing, 62 installer, 6 earlier-beta handovers, 15 export) and
+54 released-Core MTK cases, including VREF/Tablet/required LevelUp W&B,
+beta.1/.2/.3 upgrades and restore. The review found and closed an approach-mass
+provenance defect: a unit-only change retains the originating weight and
+cannot invalidate 85.0t kg input or admit an out-of-domain 187.4klb input via
+its rounded alternate-unit value.
+MTK tests used a disposable expanded-policy catalog; the published 1.20.0
+catalog was verified to contain the same complete policy. Earlier catalogs
+without the new markers reject beta.4 and roll the aircraft back exactly.
+Simulator validation remains open. The public package contains only patch
+material/runtime tables; no original/modified complete aircraft scripts,
+plugin, ACF, manual or private C++ source.
+
 # v0.1.0-beta.3
 
 10 October 2026: packs, engine bleed switches and isolation-valve changes no

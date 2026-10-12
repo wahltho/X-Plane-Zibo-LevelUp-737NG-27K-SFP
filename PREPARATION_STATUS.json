@@ -1,58 +1,54 @@
 {
-  "packageVersion": "0.1.0-beta.3",
-  "status": "Independent source review and current disposable dry tests PASS; public beta ready; simulator validation open",
+  "packageVersion": "0.1.0-beta.4",
+  "status": "Independent review/current dry tests PASS; released MTK catalog1.20.0 verified; public beta.4 release enabled; simulator validation open",
   "configuration": "737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2 / FAA Category C/N brakes",
   "installReady": true,
   "releaseReady": true,
   "mtkIntegrationReady": true,
   "validation": {
-    "sourceAudit": "Pneumatic N1 producer / automatic-speed ownership chain closed; exact previous-version migration and full standalone ownership guards retained",
-    "independentReview": "SOURCE GO; no open P0/P1/material P2 source finding",
+    "sourceAudit": "Matched SFP2 landing owner chain closed; weight origin survives unit-only toggle, original mass writers/restore verified",
+    "independentReview": "SOURCE GO and test-only GO; no open material source finding",
     "lua": {
-      "methods": 15,
-      "passed": 15,
-      "result": "PASS; original .35 ground/N1 producers, 56 pneumatic combinations, genuine beta.2 negative control, callback/acceptance/lifecycle boundaries"
+      "methods": 21,
+      "passed": 21,
+      "result": "PASS; current pinned input; actual XLua1, full CDU mass/select handlers and bounded exact landing producer slices"
     },
     "standalone": {
       "methods": 62,
       "passed": 62,
-      "result": "PASS; lifecycle, ownership, transaction/recovery, byte/mode preservation"
+      "result": "PASS; full registered inventory in three independent fixture shards"
     },
     "earlierBetaUpgrade": {
-      "methods": 5,
-      "passed": 5,
-      "result": "PASS; three actual published older-installer roundtrips and exact beta.1/beta.2 structural migration; no foreign bytes or recovery state lost"
+      "methods": 6,
+      "passed": 6,
+      "result": "PASS; exact beta.1/.2/.3 migrations, genuine matching old installer handovers and byte restore"
     },
     "publicExport": {
       "methods": 15,
       "passed": 15,
-      "result": "PASS; exact allowlist, patch-only inventory, complete standalone installer integrity dependencies and disposable install/repeat/uninstall",
-      "publicFileCount": 78
+      "result": "PASS; public patch-only inventory/integrity; reviewed runtime/structural metadata unchanged"
     },
     "mtk": {
-      "cases": 45,
-      "passed": 45,
-      "failed": 0,
-      "result": "PASS; actual released Core, exact public beta.1/beta.2 migration, required W&B and VREF/Tablet combinations, repeat and Restore",
-      "coreVersion": "0.28.2.0",
-      "coreSha256": "e1802be7c7065194900cb8fe5c763bdfa6ada5d2dc78fb6c201acd9391c059c0",
-      "catalogVersion": "1.19.0",
-      "catalogSchema": 2,
-      "catalogSha256": "e1f9494f49b7918e3882e77ce44da0ff9e6c718ecadf4011ba28af42120cdb5c"
+      "cases": 54,
+      "passed": 54,
+      "result": "PASS; released Core0.28.2.0 with disposable expanded-policy catalog; two unmodified-catalog rejection/rollback controls included"
     },
-    "simulatorRuntime": "Beta.2 tester confirms A/T improvement and reports pneumatic V-speed clearing; beta.3 simulator/real-thrust validation not run"
+    "simulatorRuntime": "not-run for beta.4; component dry tests are not flight proof"
   },
   "remainingScopeLimits": [
     "No AFM/PD dispatch distances, optimum ATM or MTOW",
     "No contaminated-runway or universal SFP hardware model",
     "Airborne first activation excluded",
-    "Exact .35 TOGA/MAN/THR-HLD/climb timing and real thrust calibration remain simulator-open"
+    "Exact .35 TOGA/MAN/THR-HLD/climb timing and real thrust calibration remain simulator-open",
+    "Native -800 stall/minimum-speed model and aerodynamic/tailskid geometry unchanged",
+    "Landing VREF covers only matched 40\u201385 t data; unavailable outside that domain",
+    "Previously selected/manual approach speed requires deliberate reselection to use a changed candidate"
   ],
   "openNumericalConvention": "Exact interpolation/rounding convention remains unverified",
   "mtkIntegrationRequirements": [
-    "MTK 0.28.2 or newer with current compatible catalog (tested schema2/catalog1.19.0) and full state/lock ownership policy",
-    "MTK loads the online catalog and verified cache; current released Core discovers normal GitHub latest releases",
-    "Selectable download/group registration belongs to the MTK catalog project; module remains optional/default OFF/order68"
+    "MTK 0.28.2 or newer with online catalog1.20.0 or a compatible current verified cache",
+    "Catalog1.20.0 registers all35 SFP27 marker pairs and full standalone state/lock rules; semantically identical to the expanded policy used in54 released-Core cases",
+    "Both Zibo and LevelUp patch groups offer module27k-sfp optional/default OFF/order68; no new MTK executable is required"
   ],
   "mtkOwnershipPolicy": "mtk-ownership-policy.json",
   "mtkPolicyAutomaticallyRegistered": false,
@@ -212,5 +208,57 @@
       }
     }
   },
-  "validationReceipt": "docs/BETA3_VALIDATION_2026_10_10.md"
+  "validationReceipt": "docs/BETA4_VALIDATION_2026_10_12.md",
+  "previousBeta3Validation": {
+    "packageVersion": "0.1.0-beta.3",
+    "status": "Independent source review and current disposable dry tests PASS; public beta ready; simulator validation open",
+    "validation": {
+      "sourceAudit": "Pneumatic N1 producer / automatic-speed ownership chain closed; exact previous-version migration and full standalone ownership guards retained",
+      "independentReview": "SOURCE GO; no open P0/P1/material P2 source finding",
+      "lua": {
+        "methods": 15,
+        "passed": 15,
+        "result": "PASS; original .35 ground/N1 producers, 56 pneumatic combinations, genuine beta.2 negative control, callback/acceptance/lifecycle boundaries"
+      },
+      "standalone": {
+        "methods": 62,
+        "passed": 62,
+        "result": "PASS; lifecycle, ownership, transaction/recovery, byte/mode preservation"
+      },
+      "earlierBetaUpgrade": {
+        "methods": 5,
+        "passed": 5,
+        "result": "PASS; three actual published older-installer roundtrips and exact beta.1/beta.2 structural migration; no foreign bytes or recovery state lost"
+      },
+      "publicExport": {
+        "methods": 15,
+        "passed": 15,
+        "result": "PASS; exact allowlist, patch-only inventory, complete standalone installer integrity dependencies and disposable install/repeat/uninstall",
+        "publicFileCount": 78
+      },
+      "mtk": {
+        "cases": 45,
+        "passed": 45,
+        "failed": 0,
+        "result": "PASS; actual released Core, exact public beta.1/beta.2 migration, required W&B and VREF/Tablet combinations, repeat and Restore",
+        "coreVersion": "0.28.2.0",
+        "coreSha256": "e1802be7c7065194900cb8fe5c763bdfa6ada5d2dc78fb6c201acd9391c059c0",
+        "catalogVersion": "1.19.0",
+        "catalogSchema": 2,
+        "catalogSha256": "e1f9494f49b7918e3882e77ce44da0ff9e6c718ecadf4011ba28af42120cdb5c"
+      },
+      "simulatorRuntime": "Beta.2 tester confirms A/T improvement and reports pneumatic V-speed clearing; beta.3 simulator/real-thrust validation not run"
+    },
+    "validationReceipt": "docs/BETA3_VALIDATION_2026_10_10.md"
+  },
+  "mtkCatalogVerification": {
+    "catalogVersion": "1.20.0",
+    "catalogSha256": "8d0dbb9bb5de1f1032c6891fa0cb25bba74e3110660bd36ca9e1eca5a9a0bde8",
+    "releasedCatalogUrl": "https://github.com/wahltho/xplane-737ng-maintenance-toolkit/releases/tag/catalog-v1.20.0",
+    "checksumVerified": true,
+    "markerPairs": 35,
+    "threeNewPairsRegistered": true,
+    "ownershipRulesPreserved": true,
+    "executedExpandedFixtureSemanticallyEqual": true
+  }
 }

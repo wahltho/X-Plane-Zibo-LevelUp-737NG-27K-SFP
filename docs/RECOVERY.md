@@ -1,13 +1,14 @@
 # Standalone interruption recovery
 
-This is the public beta installer contract. Beta.3 installation, uninstall,
-interruption recovery and earlier-version handover were validated on disposable
-fixtures; see RELEASE_NOTES.md. Simulator validation remains open.
+This is the beta installer contract. Beta.4 is an unreleased source candidate;
+its new hooks and earlier-version handover await separately approved dry tests.
+Beta.3 fixture results remain historical; see RELEASE_NOTES.md. Simulator
+validation remains open.
 
 Keep the matching extracted package: ownership, uninstall and interruption
-recovery require that same package version. To update a standalone beta.1 or beta.2,
+recovery require that same package version. To update a standalone beta.1, beta.2 or beta.3,
 uninstall with its matching old installer first, verify removal, and retain its complete state and
-backups outside the aircraft before installing beta.3. Its installer
+backups outside the aircraft before installing the released beta.4. Its installer
 deliberately refuses another version's receipt or journal. For an MTK-owned installation,
 update or restore through MTK instead.
 

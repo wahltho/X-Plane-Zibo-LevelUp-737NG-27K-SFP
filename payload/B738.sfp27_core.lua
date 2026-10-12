@@ -3,7 +3,7 @@
 -- Numeric source tables and manual references are supplied separately.
 dofile("B738.sfp27_data.lua")
 local data = B738_sfp27_data
-local core = {profile = data.profile, version = "0.1.0-dev.1"}
+local core = {profile = data.profile, version = "0.1.0-beta.4"}
 
 local function finite(n)
     return type(n) == "number" and n == n and n > -math.huge and n < math.huge
@@ -41,6 +41,17 @@ local function vector(axis, values, value)
     local lo, hi, f = bracket(axis, value)
     if lo == nil then return nil end
     return mix(values[lo], values[hi], f)
+end
+
+function core.vref(weight_t)
+    -- Landing references, independent of takeoff rating/assumed temperature.
+    -- Keep unrounded values here; the publishing adapter owns integer knots.
+    local landing = data.landing_vref
+    local ref30 = vector(landing.weight_t, landing.f30, weight_t)
+    local ref40 = vector(landing.weight_t, landing.f40, weight_t)
+    local ref15 = vector(landing.weight_t, landing.f15, weight_t)
+    if ref30 == nil or ref40 == nil or ref15 == nil then return nil, nil, nil end
+    return ref30, ref40, ref15
 end
 
 function core.supported(variant, legacy_variant, sfp)

@@ -9,10 +9,16 @@
   ],
   "position": "before",
   "contentLines": [
-    "-- package-version|0.1.0-beta.3",
+    "-- package-version|0.1.0-beta.4",
     "    B738_sfp27_fms.reset()"
   ],
   "legacyBlocks": [
+    [
+      "-- BEGIN SFP27 FMS_FLIGHT_RESET",
+      "-- package-version|0.1.0-beta.3",
+      "    B738_sfp27_fms.reset()",
+      "-- END SFP27 FMS_FLIGHT_RESET"
+    ],
     [
       "-- BEGIN SFP27 FMS_FLIGHT_RESET",
       "-- package-version|0.1.0-beta.2",

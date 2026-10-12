@@ -87,6 +87,10 @@
           "endMarker": "-- END SFP27 FMS_FLIGHT_RESET"
         },
         {
+          "beginMarker": "-- BEGIN SFP27 FMS_LANDING_VREF",
+          "endMarker": "-- END SFP27 FMS_LANDING_VREF"
+        },
+        {
           "beginMarker": "-- BEGIN SFP27 FMS_LOAD",
           "endMarker": "-- END SFP27 FMS_LOAD"
         },
@@ -156,6 +160,14 @@
         {
           "beginMarker": "-- BEGIN SFP27 CALC_GA_ALIAS",
           "endMarker": "-- END SFP27 CALC_GA_ALIAS"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 CALC_LANDING_ENVELOPE",
+          "endMarker": "-- END SFP27 CALC_LANDING_ENVELOPE"
+        },
+        {
+          "beginMarker": "-- BEGIN SFP27 CALC_LANDING_VREF",
+          "endMarker": "-- END SFP27 CALC_LANDING_VREF"
         },
         {
           "beginMarker": "-- BEGIN SFP27 CALC_LOAD",

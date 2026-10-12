@@ -10,6 +10,7 @@ SFP27DR_active = create_dataref("laminar/B738/sfp27/profile_active", "number")
 SFP27DR_input_key = create_dataref("laminar/B738/sfp27/input_key", "string")
 SFP27DR_calculated_key = create_dataref("laminar/B738/sfp27/calculated_key", "string")
 SFP27DR_n1_valid = create_dataref("laminar/B738/sfp27/n1_valid", "number")
+SFP27DR_landing_weight = create_dataref("laminar/B738/sfp27/landing_weight_t", "number")
 SFP27DR_altitude = find_dataref("sim/flightmodel2/position/pressure_altitude")
 SFP27DR_groundspeed = find_dataref("sim/flightmodel/position/groundspeed")
 SFP27DR_on_ground = find_dataref("sim/flightmodel2/gear/on_ground")
@@ -22,6 +23,7 @@ SFP27DR_der_full = find_dataref("laminar/B738/engine/calc/thr_takeoff_der_full_N
 SFP27DR_active = 0
 SFP27DR_input_key, SFP27DR_calculated_key = "", ""
 SFP27DR_n1_valid = 0
+SFP27DR_landing_weight = 0
 
 local function ground_editable()
     return SFP27DR_groundspeed < 42 and
@@ -115,6 +117,7 @@ function fms.sync()
             -- waiting for the next Calc publication. Keep original MAN/
             -- unavailable handling as the consumer of this zero sentinel.
             SFP27DR_n1_valid = 0
+            SFP27DR_landing_weight = 0
             for i = 0, 1 do
                 B738DR_thr_takeoff_N1[i], B738DR_thr_takeoff_full_N1[i], SFP27DR_der_full[i] = 0, 0, 0
             end
@@ -180,9 +183,44 @@ function fms.manual(name)
     automatic[name] = nil
 end
 
+function fms.landing_vref()
+    if SFP27DR_active ~= 1 then return end
+    -- Called after this B738_calc pass publishes current approach mass, and
+    -- after all original/optional VREF formatters. Keep the landing F15 out of
+    -- FMS/vref_15, which the compiled plugin uses as a maneuver reference.
+    -- Original writers preserve the originating value in gw_app and copy it
+    -- to exactly one backing string; the other unit is rounded. Unit-only
+    -- changes leave that triple untouched, as does snapshot save/restore.
+    -- Use the originating value, never a differently rounded alternate unit.
+    local weight_t = nil
+    if gw_app ~= "***.*" and B738DR_fmc_gw_app > 0 then
+        local source_weight = tonumber(gw_app)
+        local weight_kg = tonumber(gw_app_kgs)
+        local weight_klb = tonumber(gw_app_lbs)
+        if source_weight ~= nil and source_weight == weight_kg then
+            weight_t = source_weight
+        elseif source_weight ~= nil and source_weight == weight_klb then
+            weight_t = source_weight / KGS_LBS
+        end
+    end
+    local ref30, ref40, ref15 = core.vref(weight_t)
+    -- This same validated mass feeds Calc; no cross-unit endpoint borrowing
+    -- or interpolation of a differently rounded approach weight is needed.
+    SFP27DR_landing_weight = ref30 ~= nil and weight_t or 0
+    if ref30 == nil then
+        vref_15, vref_30, vref_40 = "---", "---", "---"
+        flaps_app = "  "
+    else
+        vref_15 = string.format("%3d", math.floor(ref15 + 0.5))
+        vref_30 = string.format("%3d", math.floor(ref30 + 0.5))
+        vref_40 = string.format("%3d", math.floor(ref40 + 0.5))
+    end
+end
+
 function fms.reset()
     automatic, last_key, last_configuration = {}, nil, nil
     SFP27DR_active, SFP27DR_n1_valid = 0, 0
+    SFP27DR_landing_weight = 0
     SFP27DR_input_key, SFP27DR_calculated_key = "", ""
 end
 

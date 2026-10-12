@@ -8,12 +8,20 @@
   ],
   "position": "after",
   "contentLines": [
-    "-- package-version|0.1.0-beta.3",
+    "-- package-version|0.1.0-beta.4",
     "    if B738_sfp27_calc.active() then",
     "        B738DR_thr_takeoff_full_N1[0], B738DR_thr_takeoff_full_N1[1] = B738_takeoff_n1_calc(alt_pressure, 1)",
     "    end"
   ],
   "legacyBlocks": [
+    [
+      "-- BEGIN SFP27 CALC_FULL_TAKEOFF",
+      "-- package-version|0.1.0-beta.3",
+      "    if B738_sfp27_calc.active() then",
+      "        B738DR_thr_takeoff_full_N1[0], B738DR_thr_takeoff_full_N1[1] = B738_takeoff_n1_calc(alt_pressure, 1)",
+      "    end",
+      "-- END SFP27 CALC_FULL_TAKEOFF"
+    ],
     [
       "-- BEGIN SFP27 CALC_FULL_TAKEOFF",
       "-- package-version|0.1.0-beta.2",

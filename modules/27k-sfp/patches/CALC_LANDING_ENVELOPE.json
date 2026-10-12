@@ -1,0 +1,17 @@
+{
+  "format": "migrate-marked-block-v1",
+  "name": "CALC_LANDING_ENVELOPE",
+  "beginMarker": "-- BEGIN SFP27 CALC_LANDING_ENVELOPE",
+  "endMarker": "-- END SFP27 CALC_LANDING_ENVELOPE",
+  "anchorLines": [
+    "\tlocal stall_1g_spd = 0"
+  ],
+  "position": "after",
+  "contentLines": [
+    "-- package-version|0.1.0-beta.4",
+    "    if B738_sfp27_calc.active() then",
+    "        vref_30, vref_x = B738_sfp27_calc.envelope_vref(total_weight_t)",
+    "    end"
+  ],
+  "legacyBlocks": []
+}

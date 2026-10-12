@@ -6,6 +6,7 @@ SFP27DR_active = find_dataref("laminar/B738/sfp27/profile_active")
 SFP27DR_input_key = find_dataref("laminar/B738/sfp27/input_key")
 SFP27DR_calculated_key = find_dataref("laminar/B738/sfp27/calculated_key")
 SFP27DR_n1_valid = find_dataref("laminar/B738/sfp27/n1_valid")
+SFP27DR_landing_weight = find_dataref("laminar/B738/sfp27/landing_weight_t")
 SFP27DR_altitude = find_dataref("sim/flightmodel2/position/pressure_altitude")
 SFP27DR_legacy = find_dataref("laminar/B738/73x")
 SFP27DR_sfp = find_dataref("laminar/B738/sfp")
@@ -97,6 +98,57 @@ function calc.trim()
     if ground_input ~= nil then result = core.trim(ground_input) end
     B738DR_trim_calc = result or 0
     B738DR_calc_trim = 0
+end
+
+function calc.landing_vref()
+    -- INTENTIONAL FIX: matched landing references replace the active profile's
+    -- standard-800 producer, including when the optional VREF patch is loaded.
+    local ref30, ref40 = core.vref(SFP27DR_landing_weight)
+    if ref30 ~= nil then
+        B738DR_fms_vref_30 = math.floor(ref30 + 0.5)
+        B738DR_fms_vref_40 = math.floor(ref40 + 0.5)
+        -- These original plugin-facing aliases are maneuver speeds, not F15
+        -- landing VREF. Both FMCs get landing F15 from the FMS adapter.
+        B738DR_fms_vref_25 = B738DR_fms_vref_40 + 10
+        B738DR_fms_vref_15 = B738DR_fms_vref_40 + 20
+        B738DR_pfd_flaps_up = B738DR_fms_vref_40 + 70
+        B738DR_pfd_flaps_1 = B738DR_fms_vref_40 + 50
+        B738DR_pfd_flaps_2 = B738DR_fms_vref_40 + 40
+        B738DR_pfd_flaps_5 = B738DR_fms_vref_40 + 30
+        B738DR_pfd_flaps_10 = B738DR_fms_vref_40 + 30
+        B738DR_pfd_flaps_15 = B738DR_fms_vref_40 + 20
+        B738DR_pfd_flaps_25 = B738DR_fms_vref_40 + 10
+    else
+        -- Original unknown-mass sentinel/default bugs, also used outside the
+        -- matched source domain. Do not retain another profile's candidates.
+        B738DR_fms_vref_15, B738DR_fms_vref_25 = 0, 0
+        B738DR_fms_vref_30, B738DR_fms_vref_40 = 0, 0
+        B738DR_pfd_flaps_up = vmax[0]
+        B738DR_pfd_flaps_1 = vmax[1] - 5
+        B738DR_pfd_flaps_2 = vmax[2] - 5
+        B738DR_pfd_flaps_5 = vmax[5] - 5
+        B738DR_pfd_flaps_10 = vmax[10] - 5
+        B738DR_pfd_flaps_15 = vmax[15] - 5
+        B738DR_pfd_flaps_25 = vmax[25] - 5
+    end
+    -- Preserve the original selected/manual approach-speed owners. A new
+    -- candidate does not silently rewrite a pilot's accepted approach target.
+    if B738DR_spd_ref == 0 then
+        B738DR_fms_vref = ref30 ~= nil and B738DR_fms_approach_speed > 0
+            and B738DR_fms_approach_speed or 0
+    elseif B738DR_spd_ref == 4 or B738DR_spd_ref == 6 then
+        B738DR_fms_vref = B738DR_man_vref
+    else
+        B738DR_fms_vref = 0
+    end
+end
+
+function calc.envelope_vref(weight_t)
+    -- Actual simulator mass is already 1000 kg. This runs after the optional
+    -- VREF module's helper call, so neither lookup order nor units can win.
+    -- Native -800 retains its separate original stall-model branch.
+    local ref30, ref40 = core.vref(weight_t)
+    return ref30 or 0, ref40 or 0
 end
 
 function calc.reset()

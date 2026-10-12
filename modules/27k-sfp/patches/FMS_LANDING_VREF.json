@@ -1,0 +1,16 @@
+{
+  "format": "migrate-marked-block-v1",
+  "name": "FMS_LANDING_VREF",
+  "beginMarker": "-- BEGIN SFP27 FMS_LANDING_VREF",
+  "endMarker": "-- END SFP27 FMS_LANDING_VREF",
+  "anchorLines": [
+    "\t-- CG",
+    "\tv = tonumber(cg)"
+  ],
+  "position": "before",
+  "contentLines": [
+    "-- package-version|0.1.0-beta.4",
+    "    B738_sfp27_fms.landing_vref()"
+  ],
+  "legacyBlocks": []
+}
