@@ -1,12 +1,14 @@
 # Zibo / LevelUp 737-800WSFP2 27K patch
 
-**0.1.0-beta.4 — SFP2 landing VREF15/30/40; public Beta.**
+**0.1.0 — stable release.**
 
-This version adds the matched SFP2 landing VREF15/30/40 family. Independent
-source review and current dry tests passed: 104 Python methods and 54 released
-MTK Core cases. Published MTK catalog 1.20.0 registers all new landing markers
-and matches the tested expanded policy. Installation is enabled for standalone
-and MTK. Simulator validation remains open.
+This release promotes beta.4 to stable with the same runtime calculations and
+performance tables. It covers the bounded profile described below; stable
+does not extend aircraft effectivity or claim certified dispatch performance.
+Standalone and MTK installation remain supported. Simulator validation and
+exact FMC interpolation/rounding remain open.
+Current stable checks passed 40 Python methods and 60 cases through the
+released MTK Core with published catalog 1.24.0.
 
 This patch implements **737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2**, with
 FAA Category C/N brakes, for upstream Zibo 4.05.35 Lua and the corresponding
@@ -15,7 +17,7 @@ LevelUp passenger 737-800. It includes the runtime performance tables for full
 unchanged. No private C++ plugin is required.
 
 Public repository: [X-Plane-Zibo-LevelUp-737NG-27K-SFP](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP).
-Current package: [v0.1.0-beta.4](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP/releases/tag/v0.1.0-beta.4).
+Current package: [v0.1.0](https://github.com/wahltho/X-Plane-Zibo-LevelUp-737NG-27K-SFP/releases/tag/v0.1.0).
 See [release notes](RELEASE_NOTES.md) for scope and validation.
 
 ## Changes existing Zibo SFP calculations
@@ -78,18 +80,19 @@ operations on three existing Lua scripts. Complete original aircraft scripts
 are not distributed. `package-manifest.json` uses supported MTK schema 3
 operations, module `27k-sfp`, optional and disabled by default, order 68.
 It uses `migrate-marked-block-v1`, `exact-text-replacements-v1` and `copy-file-v1`.
-Beta.4's complete ownership policy is registered in catalog schema 2;
-published catalog 1.20.0 includes all 35 marker pairs and the Beta module in
-both Zibo and LevelUp patch groups. Refresh MTK's online catalog before applying
-beta.4; no new MTK application release is required.
+The complete ownership policy is registered in catalog schema 2; catalog
+1.20.0 or newer includes all 35 marker pairs in both Zibo and LevelUp patch
+groups. Refresh MTK's online catalog before applying the stable release; no
+new MTK application release or ownership-policy change is required.
 The module remains optional and is not selected automatically.
 
 ### Install through MTK
 
 1. Close X-Plane. Start MTK with an internet connection and select the aircraft.
 2. Let MTK refresh its catalog, then review the product's patch package.
-3. Under Advanced, select **737-800WSFP2 27K / SFP (Beta)** and apply the
-   reviewed selection through MTK. Keep any already installed patches selected.
+3. Under Advanced, select **737-800WSFP2 27K / SFP** and apply the reviewed
+   selection through MTK. Older catalog labels may still include **(Beta)**;
+   MTK resolves the latest release. Keep already installed patches selected.
 4. Restart X-Plane completely. Enable SFP on the supported passenger -800.
 
 MTK can add this module when it already manages the shared Lua files, including
@@ -109,10 +112,10 @@ For an MTK-owned installation, update the existing patch selection through MTK
 and keep its other modules selected. The catalog reads this patch's latest
 release; no manual copy of aircraft scripts is needed.
 
-For a standalone beta.1, beta.2 or beta.3 installation, close X-Plane and uninstall using the
+For a standalone beta.1, beta.2, beta.3 or beta.4 installation, close X-Plane and uninstall using the
 retained installer for that **installed version** first. Confirm successful removal, then retain
 the complete verified `.sfp27-standalone` state/backups outside the aircraft.
-Then install beta.4 from its extracted release ZIP. Its installer deliberately refuses
+Then install v0.1.0 from its extracted release ZIP. Its installer deliberately refuses
 another version's receipt; it does not adopt another version's original-backup chain.
 Do not delete backups, manually remove hooks, or combine installation owners.
 

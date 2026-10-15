@@ -1,3 +1,29 @@
+# v0.1.0 — stable
+
+15 October 2026: promotes beta.4 to stable. Runtime calculations, performance
+tables, supported aircraft and installation ownership protections are retained.
+Only the reported package/core version, exact prior-version migration metadata
+and release documentation change. The stable label does not add AFM/PD dispatch
+data, certified field/climb limits, other aircraft variants, or simulator proof.
+
+Includes 27K/26K/24K takeoff N1, manually entered assumed temperature, dry/wet
+V-speeds, trim and matched SFP2 landing VREF15/30/40 for the identified
+737-800WSFP2 / CFM56-7B27B1 / FMC737-800W.2 profile. Installation intentionally
+changes the original Zibo SFP calculation families; see README.md.
+
+MTK users update their existing selection through MTK. Catalog1.20.0 or newer
+already registers the unchanged 35-marker ownership policy; a stale catalog
+may still show a Beta label while resolving this stable release. Standalone
+beta.1/.2/.3/.4 users first uninstall with the matching old installer, verify
+removal and retain the complete state/backups outside the aircraft, then
+install v0.1.0. Cross-version receipt adoption remains prohibited.
+
+Stable package and exact beta.4 upgrade checks are recorded in
+PREPARATION_STATUS.json. Historical beta.4 review and dry-test results below
+remain behavioral evidence; they are not new stable test executions.
+Simulator validation, calibrated physical thrust, exact FMC interpolation and
+rounding, and AFM/PD performance validation remain open.
+
 # v0.1.0-beta.4
 
 12 October 2026: adds matched 737-800WSFP2 landing VREF15/30/40 for 40–85t

@@ -8,10 +8,19 @@
   ],
   "position": "after",
   "contentLines": [
-    "-- package-version|0.1.0-beta.4",
+    "-- package-version|0.1.0",
     "    if B738_sfp27_calc.active() then",
     "        vref_30, vref_x = B738_sfp27_calc.envelope_vref(total_weight_t)",
     "    end"
   ],
-  "legacyBlocks": []
+  "legacyBlocks": [
+    [
+      "-- BEGIN SFP27 CALC_LANDING_ENVELOPE",
+      "-- package-version|0.1.0-beta.4",
+      "    if B738_sfp27_calc.active() then",
+      "        vref_30, vref_x = B738_sfp27_calc.envelope_vref(total_weight_t)",
+      "    end",
+      "-- END SFP27 CALC_LANDING_ENVELOPE"
+    ]
+  ]
 }

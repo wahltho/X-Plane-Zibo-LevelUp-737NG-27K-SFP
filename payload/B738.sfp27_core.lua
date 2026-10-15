@@ -3,7 +3,7 @@
 -- Numeric source tables and manual references are supplied separately.
 dofile("B738.sfp27_data.lua")
 local data = B738_sfp27_data
-local core = {profile = data.profile, version = "0.1.0-beta.4"}
+local core = {profile = data.profile, version = "0.1.0"}
 
 local function finite(n)
     return type(n) == "number" and n == n and n > -math.huge and n < math.huge

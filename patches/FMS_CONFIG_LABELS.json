@@ -10,10 +10,16 @@
   ],
   "position": "before",
   "contentLines": [
-    "-- package-version|0.1.0-beta.4",
+    "-- package-version|0.1.0",
     "    B738_sfp27_fms.sync()"
   ],
   "legacyBlocks": [
+    [
+      "-- BEGIN SFP27 FMS_CONFIG_LABELS",
+      "-- package-version|0.1.0-beta.4",
+      "    B738_sfp27_fms.sync()",
+      "-- END SFP27 FMS_CONFIG_LABELS"
+    ],
     [
       "-- BEGIN SFP27 FMS_CONFIG_LABELS",
       "-- package-version|0.1.0-beta.3",

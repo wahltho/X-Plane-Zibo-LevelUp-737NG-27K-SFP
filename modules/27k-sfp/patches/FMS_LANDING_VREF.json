@@ -9,8 +9,15 @@
   ],
   "position": "before",
   "contentLines": [
-    "-- package-version|0.1.0-beta.4",
+    "-- package-version|0.1.0",
     "    B738_sfp27_fms.landing_vref()"
   ],
-  "legacyBlocks": []
+  "legacyBlocks": [
+    [
+      "-- BEGIN SFP27 FMS_LANDING_VREF",
+      "-- package-version|0.1.0-beta.4",
+      "    B738_sfp27_fms.landing_vref()",
+      "-- END SFP27 FMS_LANDING_VREF"
+    ]
+  ]
 }

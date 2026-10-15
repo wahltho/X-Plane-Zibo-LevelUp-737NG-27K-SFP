@@ -1,39 +1,41 @@
 {
-  "packageVersion": "0.1.0-beta.4",
-  "status": "Independent review/current dry tests PASS; released MTK catalog1.20.0 verified; public beta.4 release enabled; simulator validation open",
+  "packageVersion": "0.1.0",
+  "status": "Stable v0.1.0; unchanged beta.4 calculations; current package, exact prior-version migration and MTK checks PASS; simulator validation open",
   "configuration": "737-800WSFP2 / CFM56-7B27B1 / FMC 737-800W.2 / FAA Category C/N brakes",
   "installReady": true,
   "releaseReady": true,
   "mtkIntegrationReady": true,
   "validation": {
-    "sourceAudit": "Matched SFP2 landing owner chain closed; weight origin survives unit-only toggle, original mass writers/restore verified",
-    "independentReview": "SOURCE GO and test-only GO; no open material source finding",
     "lua": {
       "methods": 21,
       "passed": 21,
-      "result": "PASS; current pinned input; actual XLua1, full CDU mass/select handlers and bounded exact landing producer slices"
-    },
-    "standalone": {
-      "methods": 62,
-      "passed": 62,
-      "result": "PASS; full registered inventory in three independent fixture shards"
-    },
-    "earlierBetaUpgrade": {
-      "methods": 6,
-      "passed": 6,
-      "result": "PASS; exact beta.1/.2/.3 migrations, genuine matching old installer handovers and byte restore"
+      "result": "PASS; current stable payloads and exact original Lua producer/component fixtures"
     },
     "publicExport": {
       "methods": 15,
       "passed": 15,
-      "result": "PASS; public patch-only inventory/integrity; reviewed runtime/structural metadata unchanged"
+      "result": "PASS; current 84-file patch-only export, all cells/missing cells/indices, integrity and disposable installation lifecycle"
     },
+    "standaloneUpgrade": {
+      "methods": 3,
+      "passed": 3,
+      "result": "PASS; exact released beta.4 owner handover with refusal of cross-version receipt adoption, preserved foreign edits/backups, repeat/remove; structural migrations from exact beta.1/.2/.3/.4; W&B reset composition"
+    },
+    "offlineGuard": {
+      "methods": 1,
+      "passed": 1,
+      "result": "PASS; original X-Plane process refusal remains enforced"
+    },
+    "pythonUniqueMethods": 40,
     "mtk": {
-      "cases": 54,
-      "passed": 54,
-      "result": "PASS; released Core0.28.2.0 with disposable expanded-policy catalog; two unmodified-catalog rejection/rollback controls included"
+      "cases": 60,
+      "passed": 60,
+      "result": "PASS; actual released Core0.28.2.0, current published catalog1.24.0 without marker extensions; exact beta.1/.2/.3/.4 upgrades, both products/LF/CRLF, composition/restore and unchanged ownership guards; retained catalog1.19.0 negative controls"
     },
-    "simulatorRuntime": "not-run for beta.4; component dry tests are not flight proof"
+    "semanticDelta": "Only core.version literal changes in runtime payloads; tables/calculations/owner chains/cache contracts unchanged from published beta.4",
+    "fixtureFidelity": "Disposable macOS targets. A narrowly scoped fixture process list permits fixture-only CLI checks while real X-Plane remains running; production installer/process guard is byte-identical and its separate refusal test passes. No Windows/live-aircraft install is claimed.",
+    "historicalBehavioralEvidence": "previousBeta4Status.validation contains the independent beta.4 review and earlier 104 Python/54 Core results; these are not new stable executions.",
+    "simulatorRuntime": "Not run; stable label does not establish calibrated thrust, full simulator callback behavior or certified performance"
   },
   "remainingScopeLimits": [
     "No AFM/PD dispatch distances, optimum ATM or MTOW",
@@ -46,8 +48,8 @@
   ],
   "openNumericalConvention": "Exact interpolation/rounding convention remains unverified",
   "mtkIntegrationRequirements": [
-    "MTK 0.28.2 or newer with online catalog1.20.0 or a compatible current verified cache",
-    "Catalog1.20.0 registers all35 SFP27 marker pairs and full standalone state/lock rules; semantically identical to the expanded policy used in54 released-Core cases",
+    "MTK 0.28.2 or newer with online catalog1.20.0 or newer; current published catalog1.24.0 checked",
+    "Catalog1.20.0 or newer registers all35 SFP27 marker pairs and full standalone state/lock rules; no policy change required",
     "Both Zibo and LevelUp patch groups offer module27k-sfp optional/default OFF/order68; no new MTK executable is required"
   ],
   "mtkOwnershipPolicy": "mtk-ownership-policy.json",
@@ -252,13 +254,48 @@
     "validationReceipt": "docs/BETA3_VALIDATION_2026_10_10.md"
   },
   "mtkCatalogVerification": {
-    "catalogVersion": "1.20.0",
-    "catalogSha256": "8d0dbb9bb5de1f1032c6891fa0cb25bba74e3110660bd36ca9e1eca5a9a0bde8",
-    "releasedCatalogUrl": "https://github.com/wahltho/xplane-737ng-maintenance-toolkit/releases/tag/catalog-v1.20.0",
-    "checksumVerified": true,
+    "catalogVersion": "1.24.0",
+    "checksums": {
+      "content-package-catalog.json": "2201377e0551ceda9b87e485ba8c43abc498ad17a48ee95700cc3940853a003f",
+      "content-package-catalog.schema.json": "a76cd8a33360119c50d7800cb2a3cdd7c47fdbef581a512be710fe5386efc8e1"
+    },
     "markerPairs": 35,
-    "threeNewPairsRegistered": true,
-    "ownershipRulesPreserved": true,
-    "executedExpandedFixtureSemanticallyEqual": true
+    "policyMatchesStableTargetsNamespacesAndStandaloneRules": true,
+    "displayName": "737-800WSFP2 27K / SFP",
+    "catalogNotModified": true
+  },
+  "previousBeta4Status": {
+    "packageVersion": "0.1.0-beta.4",
+    "status": "Independent review/current dry tests PASS; released MTK catalog1.20.0 verified; public beta.4 release enabled; simulator validation open",
+    "validation": {
+      "sourceAudit": "Matched SFP2 landing owner chain closed; weight origin survives unit-only toggle, original mass writers/restore verified",
+      "independentReview": "SOURCE GO and test-only GO; no open material source finding",
+      "lua": {
+        "methods": 21,
+        "passed": 21,
+        "result": "PASS; current pinned input; actual XLua1, full CDU mass/select handlers and bounded exact landing producer slices"
+      },
+      "standalone": {
+        "methods": 62,
+        "passed": 62,
+        "result": "PASS; full registered inventory in three independent fixture shards"
+      },
+      "earlierBetaUpgrade": {
+        "methods": 6,
+        "passed": 6,
+        "result": "PASS; exact beta.1/.2/.3 migrations, genuine matching old installer handovers and byte restore"
+      },
+      "publicExport": {
+        "methods": 15,
+        "passed": 15,
+        "result": "PASS; public patch-only inventory/integrity; reviewed runtime/structural metadata unchanged"
+      },
+      "mtk": {
+        "cases": 54,
+        "passed": 54,
+        "result": "PASS; released Core0.28.2.0 with disposable expanded-policy catalog; two unmodified-catalog rejection/rollback controls included"
+      },
+      "simulatorRuntime": "not-run for beta.4; component dry tests are not flight proof"
+    }
   }
 }

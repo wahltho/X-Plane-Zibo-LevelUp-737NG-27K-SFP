@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "Reviewed public beta runtime package file selection",
+  "status": "Reviewed public runtime package file selection",
   "files": [
     "README.md",
     "RELEASE_NOTES.md",
